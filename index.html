@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>폴라밸런스 멍BTI : 마인드 케어 진단</title>
+
+<style>
+:root{
+  --bg:#fff7ef; --card:#ffffff; --pri:#ff8a65; --txt:#333;
+  --btn:#ff7043; --sub:#7cc6c6;
+}
+*{box-sizing:border-box;font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",Arial,sans-serif}
+body{margin:0;background:linear-gradient(180deg,#fff7ef,#fff);color:var(--txt)}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+header{background:linear-gradient(135deg,#ffb199,#ff8a65);color:#fff;border-radius:22px;padding:32px 20px;margin-bottom:18px;text-align:center}
+header h1{margin:0 0 6px;font-size:28px}
+header p{margin:0;opacity:.95}
+
+.card{background:#fff;border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:0 12px 28px rgba(0,0,0,.07)}
+.center{text-align:center}
+
+input,select,button{width:100%;max-width:420px;padding:14px;border-radius:14px;font-size:16px}
+input,select{border:2px dashed #ffd1c2}
+button{border:0;cursor:pointer}
+.primary{background:var(--btn);color:#fff;font-weight:700}
+
+.progress{height:8px;background:#eee;border-radius:999px;overflow:hidden;margin-bottom:16px}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#ff8a65,#26a69a)}
+
+.q h3{font-size:18px;margin-bottom:12px}
+.opt{padding:14px;border-radius:14px;border:2px solid #eee;margin-bottom:10px;cursor:pointer}
+.opt:hover{border-color:#ffd1c2;background:#fffaf6}
+
+.badge{display:inline-block;padding:8px 14px;border-radius:999px;background:#fff0ea;color:#ff7043;font-weight:800;margin-bottom:8px}
+.imgbox{max-width:320px;margin:14px auto}
+.imgbox img{width:100%;height:auto;display:block;border-radius:18px}
+
+.cta{margin-top:20px}
+.cta a{text-decoration:none}
+.cta button{width:100%}
+pre{white-space:pre-wrap;line-height:1.6}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<header>
+  <h1>🐶 폴라밸런스 멍BTI</h1>
+  <p>MBTI는 재미로 보지만, 아이의 스트레스는 다큐입니다.</p>
+</header>
+
+<!-- START -->
+<div id="screen-start" class="card center">
+  <h2>우리 아이 정보 입력</h2>
+  <input id="dogName" placeholder="강아지 이름 (예: 폴라)">
+  <select id="dogBreed">
+    <option value="">견종을 선택하세요</option>
+    <optgroup label="🐾 소형견">
+      <option>말티즈</option><option>푸들 (토이푸들)</option><option>포메라니안</option>
+      <option>치와와</option><option>요크셔테리어</option><option>시츄</option>
+      <option>페키니즈</option><option>비숑프리제</option><option>파피용</option>
+      <option>미니어처 핀셔</option><option>닥스훈트</option><option>프렌치 불독</option>
+      <option>보스턴 테리어</option><option>미니어처 슈나우저</option>
+      <option>퍼그</option><option>잭 러셀 테리어</option><option>코커스패니얼(소형)</option>
+    </optgroup>
+    <optgroup label="🐾 중형견">
+      <option>비글</option><option>웰시코기</option><option>시바견</option><option>진돗개</option>
+      <option>보더콜리</option><option>코커 스패니얼</option><option>불독</option>
+      <option>사모예드(중대형)</option><option>차우차우</option><option>스피츠</option>
+      <option>아메리칸 코카 스패니얼</option><option>베들링턴 테리어</option>
+      <option>불테리어</option><option>스태퍼드셔 불테리어</option>
+    </optgroup>
+    <optgroup label="🐾 대형견">
+      <option>골든 리트리버</option><option>래브라도 리트리버</option>
+      <option>저먼 셰퍼드</option><option>로트와일러</option><option>도베르만</option>
+      <option>알래스칸 말라뮤트</option><option>그레이트 피레니즈</option>
+      <option>세인트 버나드</option><option>버니즈 마운틴 독</option>
+      <option>아프간 하운드</option><option>아이리시 울프하운드</option>
+      <option>티베탄 마스티프</option><option>뉴펀들랜드</option>
+    </optgroup>
+    <optgroup label="🐾 믹스견">
+      <option>말티푸 (말티즈 + 푸들)</option>
+      <option>골든두들 (골든리트리버 + 푸들)</option>
+      <option>라브라도들</option><option>치와푸</option>
+      <option>포메푸</option><option>시츄푸</option><option>코카푸</option>
+      <option>해당없음</option>
+    </optgroup>
+  </select>
+  <button class="primary" onclick="start()">진단 시작</button>
+</div>
+
+<!-- TEST -->
+<div id="screen-test" class="card" style="display:none">
+  <div class="progress"><div id="bar" class="bar"></div></div>
+  <div id="question"></div>
+</div>
+
+<!-- RESULT -->
+<div id="screen-result" class="card" style="display:none"></div>
+</div>
+
+<script>
+const score={E:0,I:0,N:0,S:0,T:0,F:0,P:0,J:0};
+let qi=0,name='',breed='';
+/* 질문 배열은 네 코드 그대로 유지 */
+const Q=[
+{t:"Q1. 외출 준비(옷 입기, 열쇠 챙기기)를 할 때 아이의 반응은?",a:[
+{l:"1. \"다녀오세요~\" 자기 자리에 가서 눕거나 별 반응 없다. (안정형)",s:{I:2}},
+{l:"2. \"나도 데려가!\" 현관 앞을 막거나 안절부절못하며 낑낑거린다. (불안형)",s:{F:1,E:1}},
+{l:"3. 내가 나가자마자 하울링을 하거나 문을 긁는다. (고위험군)",s:{F:2,E:2}},
+{l:"4. 잘 모르겠다 / 상황마다 다르다.",s:{}}
+]},
+{t:"Q2. 평소 '발사탕(발을 핥는 행동)'이나 꼬리 물기를 자주 하나요?",a:[
+{l:"1. 거의 하지 않는다.",s:{S:2}},
+{l:"2. 심심해 보일 때 가끔 핥거나 깨문다. (무료함/습관)",s:{N:1}},
+{l:"3. 발이 축축해질 정도로 자주 핥거나, 빙글빙글 도는 행동을 반복한다. (강박/스트레스)",s:{N:2}},
+{l:"4. 잘 모르겠다 / 애매하다.",s:{}}
+]},
+{t:"Q3. '초인종 소리'나 '택배 기사님' 인기척에 대한 반응은?",a:[
+{l:"1. 귀만 쫑긋하고 짖지 않는다.",s:{S:1,I:1}},
+{l:"2. \"누구세요!\" 한두 번 짖고 주인이 말리면 멈춘다.",s:{E:1}},
+{l:"3. 소리가 들리면 이성을 잃은 듯 짖고, 쉽게 진정되지 않는다. (경계성 예민)",s:{E:2,N:1}},
+{l:"4. 잘 모르겠다.",s:{}}
+]},
+{t:"Q4. 산책 중 낯선 강아지나 사람을 만났을 때?",a:[
+{l:"1. 꼬리를 흔들며 반갑게 인사하거나 무시하고 지나간다.",s:{E:2}},
+{l:"2. 내 뒤로 숨거나 걸음을 멈추고 얼어버린다. (공포/회피)",s:{I:2}},
+{l:"3. 털을 세우고 으르렁거리거나 달려들려고 한다. (방어적 공격성)",s:{T:2}},
+{l:"4. 잘 모르겠다.",s:{}}
+]},
+{t:"Q5. 아이의 평소 수면 스타일은 어떤가요?",a:[
+{l:"1. 배를 까뒤집고 세상 모르고 '떡실신' 한다.",s:{S:1,J:1}},
+{l:"2. 작은 소리에도 벌떡 일어나거나, 자리를 자주 옮긴다.",s:{N:1}},
+{l:"3. 잘 때도 몸을 웅크리고, 눈을 뜨고 자거나 꿈틀거림이 심하다. (긴장 상태)",s:{N:2}},
+{l:"4. 잘 모르겠다.",s:{}}
+]},
+{t:"Q6. 혼자 있을 때 집안 물건(벽지, 휴지, 가구)을 훼손한 적이 있나요?",a:[
+{l:"1. 전혀 없다. 장난감만 가지고 논다.",s:{J:2}},
+{l:"2. 어릴 때는 그랬지만 지금은 가끔 실수만 한다.",s:{P:1}},
+{l:"3. 혼자 두면 휴지통을 뒤지거나 물건을 물어뜯어 놓는다. (불만 표출/파괴)",s:{P:2}},
+{l:"4. 잘 모르겠다.",s:{}}
+]},
+{t:"Q7. 평소 스킨십(빗질, 목욕, 발톱 깎기)을 할 때 반응은?",a:[
+{l:"1. 얌전히 잘 받거나 즐기는 편이다.",s:{F:2}},
+{l:"2. 싫어하지만 간식을 주면 참아낸다.",s:{T:1}},
+{l:"3. 손만 대려 해도 기겁하거나 입질을 하려 한다. (접촉 스트레스/트라우마)",s:{T:2}},
+{l:"4. 잘 모르겠다.",s:{}}
+]},
+{t:"Q8. 최근 들어 이유 없이 구토를 하거나 설사(무른 변)를 한 적이 있나요?",a:[
+{l:"1. 황금 변을 보고 소화력도 좋다.",s:{S:2}},
+{l:"2. 낯선 곳에 가거나 혼나면 가끔 그런다.",s:{N:1}},
+{l:"3. 병원에서는 이상 없다는데 자주 토하거나 변이 묽다. (신경성 위장 장애)",s:{N:2}},
+{l:"4. 잘 모르겠다.",s:{}}
+]},
+{t:"Q9. 우리 아이가 가장 행복해 보일 때는 언제인가요?",a:[
+{l:"1. 넓은 공원을 마음껏 뛰어놀 때 (에너지 발산 욕구)",s:{E:1,P:1}},
+{l:"2. 내 무릎 위에서 편안하게 쓰다듬어질 때 (애정/안정 욕구)",s:{F:2}},
+{l:"3. 맛있는 간식을 먹을 때 (식탐/보상 욕구)",s:{S:2}},
+{l:"4. 잘 모르겠다.",s:{}}
+]},
+{t:"Q10. 견주님이 아이에게 바라는 단 한 가지 소원은?",a:[
+{l:"1. 아프지 않고 튼튼하게 오래 사는 것 (신체 건강)",s:{S:1}},
+{l:"2. 불안해하지 않고 마음 편하게 지내는 것 (정신 건강/안정)",s:{N:1,F:1}},
+{l:"3. 나 없이도 씩씩하게 잘 지내는 것 (독립심)",s:{T:1,I:1}},
+{l:"4. 잘 모르겠다.",s:{}}
+]}
+];
+
+
+function start(){
+name=document.getElementById('dogName').value||'우리 아이';
+breed=document.getElementById('dogBreed').value||'견종 미상';
+document.getElementById('screen-start').style.display='none';
+document.getElementById('screen-test').style.display='block';
+render();
+}
+
+function render(){
+const q=Q[qi];
+document.getElementById('bar').style.width=((qi)/Q.length*100)+'%';
+let html=`<div class="q"><h3>${q.t}</h3>`;
+q.a.forEach((o,i)=>html+=`<div class="opt" onclick="pick(${i})">${o.l}</div>`);
+html+=`</div>`;
+document.getElementById('question').innerHTML=html;
+}
+
+function pick(i){
+Object.keys(Q[qi].a[i].s).forEach(k=>score[k]+=Q[qi].a[i].s[k]);
+qi++;
+qi<Q.length?render():finish();
+}
+
+function finish(){
+document.getElementById('screen-test').style.display='none';
+const type=(score.E>=score.I?'E':'I')+(score.N>=score.S?'N':'S')+(score.F>=score.T?'F':'T')+(score.P>=score.J?'P':'J');
+document.getElementById('screen-result').style.display='block';
+document.getElementById('screen-result').innerHTML=`
+<div class="center">
+<span class="badge">${type} · ${breed}</span>
+<h2>${name}의 멍BTI 결과</h2>
+<div class="imgbox">
+  <img src="images/${type}.png" alt="${type} 강아지">
+</div>
+
+<p><strong>"MBTI는 재미로 보지만, 아이의 스트레스는 다큐입니다."</strong><br>
+검사 결과, 우리 아이는 겉모습과 달리 속으로는 알게 모르게 긴장하고 스트레스를 받고 있습니다.
+돈으로 아이의 마음을 살 순 없지만, 마음의 평화는 선물할 수 있습니다.
+수의사가 설계한 [폴라밸런스]로 오늘 밤부터 우리 아이에게 진정한 '꿀잠'과 '안정'을 선물하세요.</p>
+
+<div class="cta">
+<a href="https://www.coupang.com/vp/products/9083913135" target="_blank">
+<button class="primary">👉 우리 아이 맞춤 [마음 처방전] 확인하기</button>
+</a>
+</div>
+</div>`;
+}
+</script>
+</body>
+</html>
