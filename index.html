@@ -70,7 +70,8 @@ button:active{transform:scale(0.98)}
 
 .badge{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--bg);color:var(--pri-dark);font-size:13px;font-weight:800;margin-bottom:16px; letter-spacing:0.5px; border:1px solid var(--sub);}
 
-.mbti-img-box{
+/* [수정됨] 결과 이미지 스타일: 원본 비율 유지 */
+.mbti-img-box {
     width: 100%;
     max-width: 320px; 
     margin: 0 auto 30px; 
@@ -79,13 +80,15 @@ button:active{transform:scale(0.98)}
     box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     border: 1px solid #eee;
     background: #fff;
-    position: relative;
+    /* position: relative; 제거 */
 }
-.mbti-img-box::after {
-    content:''; display:block; padding-bottom:100%;
-}
-.mbti-img-box img{
-    position: absolute; width:100%; height:100%; object-fit: cover; left:0; top:0;
+/* .mbti-img-box::after 제거됨 */
+
+.mbti-img-box img {
+    width: 100%;
+    height: auto; /* 높이 자동 조절 */
+    display: block;
+    /* position: absolute; 제거 */
 }
 
 /* 확장된 결과 텍스트 스타일 */
