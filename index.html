@@ -32,6 +32,10 @@ button{border:0;cursor:pointer;transition:transform .1s}
 button:active{transform:scale(0.98)}
 .primary{background:var(--pri-dark);color:#fff;font-weight:700;font-size:17px}
 
+/* 공유하기 버튼 스타일 (보조 버튼) */
+.secondary{background:#fff; border:2px solid #D6C6B8; color:#6B5646; font-weight:600; font-size:16px;}
+.secondary:hover{background:#F4EDE6; border-color:#6B5646;}
+
 .progress{height:8px;background:#eee;border-radius:999px;overflow:hidden;margin-bottom:24px}
 .bar{height:100%;width:0;background:linear-gradient(90deg,#6B5646,#8C6A55);transition:width .4s ease}
 
@@ -56,7 +60,7 @@ button:active{transform:scale(0.98)}
     display:block;
 }
 
-/* 결과 텍스트 스타일 강화 */
+/* 결과 텍스트 스타일 */
 .result-content {
     text-align: left;
     white-space: pre-wrap;
@@ -229,7 +233,7 @@ const Q=[
 ]}
 ];
 
-/* 심층 분석 결과 텍스트 */
+/* 심층 분석 결과 텍스트 (4단 구성) */
 const RESULT_TEXT = {
 INTJ: `[분석가형] 용의주도한 전략가 (INTJ)
 "나만의 시간과 공간이 절대적으로 필요한 아이"
@@ -604,6 +608,27 @@ function pick(i){
   qi<Q.length?render():finish();
 }
 
+// 공유하기 기능
+async function shareResult() {
+    // 1. 현재 타입과 이름 가져오기 (전역변수가 아니므로 DOM이나 Logic에서 추적 필요하지만, 간단히 Title/URL만 공유)
+    const shareData = {
+        title: '폴라밸런스 멍BTI',
+        text: `${name}의 멍BTI 결과를 확인해보세요!`,
+        url: window.location.href
+    };
+
+    try {
+        if (navigator.share) {
+            await navigator.share(shareData); // 네이티브 공유 (모바일)
+        } else {
+            await navigator.clipboard.writeText(window.location.href); // 클립보드 복사 (PC)
+            alert('링크가 복사되었습니다! 친구에게 공유해보세요.');
+        }
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 function finish(){
   document.getElementById('screen-test').style.display='none';
   document.getElementById('screen-result').style.display='block';
@@ -635,12 +660,12 @@ ${name}에게 맞는 정확한 처방을 내릴 수가 없습니다.
     return;
   }
 
-  // 2. 결과 산출
+  // 2. 결과 산출 (황금 밸런스 수정)
   const type = 
-    (score.E >= score.I ? 'E' : 'I') +
-    (score.N >= score.S ? 'N' : 'S') +
-    (score.F >= score.T ? 'F' : 'T') +
-    (score.P >= score.J ? 'P' : 'J');
+    (score.E >= score.I ? 'E' : 'I') +  // E가 이김
+    (score.N > score.S ? 'N' : 'S') +   // S가 이김 (안정성 우선)
+    (score.F >= score.T ? 'F' : 'T') +  // F가 이김
+    (score.P > score.J ? 'P' : 'J');    // J가 이김 (규칙성 우선)
   
   // 3. MBTI 대표 이미지 (16종)
   const imgPath = `images/${type}.png`; 
@@ -679,6 +704,10 @@ ${name}에게 맞는 정확한 처방을 내릴 수가 없습니다.
       <a href="https://smartstore.naver.com/polar_balance/products/12454553993?nl-query=%ED%8F%B4%EB%9D%BC%EB%B0%B8%EB%9F%B0%EC%8A%A4&nl-ts-pid=jUNOCsqVW9jO2LU2Jas-227871&NaPm=ct%3Dmkuvfj94%7Cci%3D15000ee5bc839bdd3682200d132a33913cecd49a%7Ctr%3Dsls%7Csn%3D12374561%7Chk%3D0930d7a1f724956c36709eeb8580212fca533b6f" target="_blank">
         <button class="primary" style="padding:18px; font-size:18px;">👉 ${name} 맞춤 [마음 처방전] 확인하기</button>
       </a>
+      
+      <div style="margin-top:10px; text-align:center">
+        <button class="secondary" onclick="shareResult()" style="padding:14px; font-size:16px; width:100%">🔗 친구에게 결과 공유하기</button>
+      </div>
     </div>
 
     <div style="margin-top:20px;text-align:center">
