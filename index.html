@@ -328,12 +328,23 @@ render();
 }
 
 function render(){
-const q=Q[qi];
-document.getElementById('bar').style.width=((qi)/Q.length*100)+'%';
-let html=`<div class="q"><h3>${q.t}</h3>`;
-q.a.forEach((o,i)=>html+=`<div class="opt" onclick="pick(${i})">${o.l}</div>`);
-html+=`</div>`;
-document.getElementById('question').innerHTML=html;
+  const q = Q[qi];
+  document.getElementById('bar').style.width = ((qi) / Q.length * 100) + '%';
+
+  let html = `
+    <div style="text-align:right;font-size:13px;opacity:.6;margin-bottom:6px">
+      ${qi + 1} / ${Q.length}
+    </div>
+    <div class="q">
+      <h3>${q.t}</h3>
+  `;
+
+  q.a.forEach((o,i)=>{
+    html += `<div class="opt" onclick="pick(${i})">${o.l}</div>`;
+  });
+
+  html += `</div>`;
+  document.getElementById('question').innerHTML = html;
 }
 
 function pick(i){
@@ -355,21 +366,43 @@ document.getElementById('screen-result').innerHTML=`
 </div>
 <pre>${RESULT_TEXT[type]}</pre>
 
+<p style="font-size:14px;color:#6B5646;opacity:.8;margin-top:10px">
+※ 본 결과는 반려견 행동학 관점의 스트레스 성향 분석을 기반으로 설계되었습니다.
+</p>
+
 <p><strong>"MBTI는 재미로 보지만, 아이의 스트레스는 다큐입니다."</strong><br>
 검사 결과, 우리 아이는 겉모습과 달리 속으로는 알게 모르게 긴장하고 스트레스를 받고 있습니다.
 돈으로 아이의 마음을 살 순 없지만, 마음의 평화는 선물할 수 있습니다.
 수의사가 설계한 [폴라밸런스]로 오늘 밤부터 우리 아이에게 진정한 '꿀잠'과 '안정'을 선물하세요.</p>
 
 <div class="cta">
-<a href="https://smartstore.naver.com/polar_balance/products/12454553993?nl-query=%ED%8F%B4%EB%9D%BC%EB%B0%B8%EB%9F%B0%EC%8A%A4&nl-ts-pid=jUNOCsqVW9jO2LU2Jas-227871&NaPm=ct%3Dmkuvfj94%7Cci%3D15000ee5bc839bdd3682200d132a33913cecd49a%7Ctr%3Dsls%7Csn%3D12374561%7Chk%3D0930d7a1f724956c36709eeb8580212fca533b6f">
-<button class="primary">👉 우리 아이 맞춤 [마음 처방전] 확인하기</button>
-</a>
+  <a href="https://smartstore.naver.com/polar_balance/products/12454553993?nl-query=%ED%8F%B4%EB%9D%BC%EB%B0%B8%EB%9F%B0%EC%8A%A4&nl-ts-pid=jUNOCsqVW9jO2LU2Jas-227871&NaPm=ct%3Dmkuvfj94%7Cci%3D15000ee5bc839bdd3682200d132a33913cecd49a%7Ctr%3Dsls%7Csn%3D12374561%7Chk%3D0930d7a1f724956c36709eeb8580212fca533b6f">
+    <button class="primary">👉 우리 아이 맞춤 [마음 처방전] 확인하기</button>
+  </a>
+</div>
+
+<div style="margin-top:14px;text-align:center">
+  <button
+    onclick="location.reload()"
+    style="
+      background:#D6C6B8;
+      color:#3E2F25;
+      font-weight:600;
+      border-radius:14px;
+      padding:12px 18px;
+      border:none;
+      cursor:pointer;
+    "
+  >
+    🔁 다른 아이로 다시 검사하기
+  </button>
 </div>
 </div>`;
 }
 </script>
 </body>
 </html>
+
 
 
 
