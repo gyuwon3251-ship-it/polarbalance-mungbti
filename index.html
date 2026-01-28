@@ -7,17 +7,18 @@
 
 <style>
 :root{
-  --bg:#F4EDE6;
-  --card:#ffffff;
-  --pri:#6B5646;
-  --txt:#3E2F25;
-  --btn:#4A3A2E;
-  --sub:#D6C6B8;
+ --bg:#F4EDE6;          
+  --card:#FFFFFF;       
+  --pri:#6B5646;        
+  --pri-dark:#4A3A2E;   
+  --sub:#D6C6B8;       
+  --accent:#8C6A55;     
+  --txt:#3E2F25;       
 }
 *{box-sizing:border-box;font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",Arial,sans-serif}
 body{margin:0;background:linear-gradient(180deg,#fff7ef,#fff);color:var(--txt)}
 .wrap{max-width:900px;margin:0 auto;padding:16px}
-header{background:linear-gradient(135deg,#ffb199,#ff8a65);color:#fff;border-radius:22px;padding:32px 20px;margin-bottom:18px;text-align:center}
+header{background:linear-gradient(135deg,#6B5646,#4A3A2E);color:#fff;border-radius:22px;padding:32px 20px;margin-bottom:18px;text-align:center}
 header h1{margin:0 0 6px;font-size:28px}
 header p{margin:0;opacity:.95}
 
@@ -25,16 +26,16 @@ header p{margin:0;opacity:.95}
 .center{text-align:center}
 
 input,select,button{width:100%;max-width:420px;padding:14px;border-radius:14px;font-size:16px}
-input,select{border:2px dashed #ffd1c2}
+input,select{border:2px dashed var(--sub)}
 button{border:0;cursor:pointer}
-.primary{background:var(--btn);color:#fff;font-weight:700}
+.primary{background:var(--pri-dark);color:#fff;font-weight:700}
 
 .progress{height:8px;background:#eee;border-radius:999px;overflow:hidden;margin-bottom:16px}
-.bar{height:100%;width:0;background:linear-gradient(90deg,#ff8a65,#26a69a)}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#6B5646,#8C6A55)}
 
 .q h3{font-size:18px;margin-bottom:12px}
 .opt{padding:14px;border-radius:14px;border:2px solid #eee;margin-bottom:10px;cursor:pointer}
-.opt:hover{border-color:#ffd1c2;background:#fffaf6}
+.opt:hover{border-color:var(--pri);background:#F4EDE6}
 
 .badge{display:inline-block;padding:8px 14px;border-radius:999px;background:#fff0ea;color:#ff7043;font-weight:800;margin-bottom:8px}
 .imgbox{max-width:320px;margin:14px auto}
@@ -369,5 +370,6 @@ document.getElementById('screen-result').innerHTML=`
 </script>
 </body>
 </html>
+
 
 
