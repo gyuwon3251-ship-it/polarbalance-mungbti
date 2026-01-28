@@ -70,26 +70,26 @@ button:active{transform:scale(0.98)}
 
 .badge{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--bg);color:var(--pri-dark);font-size:13px;font-weight:800;margin-bottom:16px; letter-spacing:0.5px; border:1px solid var(--sub);}
 
-/* [수정됨] 결과 이미지 스타일: 원본 비율 유지 */
+/* [진짜 수정 완료] 이미지 짤림 방지 CSS */
 .mbti-img-box {
     width: 100%;
-    max-width: ４20px; 
+    max-width: 320px; 
     margin: 0 auto 30px; 
     border-radius: 24px; 
     overflow: hidden; 
     box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     border: 1px solid #eee;
     background: #fff;
-    /* position: relative; 제거 */
+    /* position: relative; 삭제함 */
 }
-/* .mbti-img-box::after 제거됨 */
+
+/* 중요: 아래 .mbti-img-box::after { ... } 코드가 있으면 안 됩니다. 삭제했습니다. */
 
 .mbti-img-box img {
     width: 100%;
-    height: auto; /* 높이 자동 조절 */
+    height: auto; /* 높이를 자동 조절하여 원본 비율 유지 */
     display: block;
-    object-fit: contain;
-    /* position: absolute; 제거 */
+    /* position: absolute; 삭제함 */
 }
 
 /* 확장된 결과 텍스트 스타일 */
@@ -211,7 +211,6 @@ button:active{transform:scale(0.98)}
           </select>
       </div>
       <button class="primary" onclick="start()">무료 진단 시작하기</button>
-      
       <p style="margin-top:20px; font-size:13px; color:#ccc; font-weight:400;">
         Provided by <strong>Polar Balance</strong>
       </p>
@@ -770,4 +769,3 @@ function finish(){
 </script>
 </body>
 </html>
-
