@@ -3,85 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>폴라밸런스 멍BTI : 마인드 케어 진단</title>
+<title>폴라밸런스 멍BTI : 반려견 마인드 케어 진단</title>
+<meta property="og:title" content="폴라밸런스 멍BTI">
+<meta property="og:description" content="우리 아이의 마음을 읽어보세요. 수의사가 설계한 스트레스 및 성향 정밀 분석.">
+<meta property="og:image" content="images/share_thumb.png">
 
 <style>
 :root{
-  --bg:#F4EDE6;           
+  --bg:#F9F5F2;           
   --card:#FFFFFF;        
   --pri:#6B5646;        
   --pri-dark:#4A3A2E;    
-  --sub:#D6C6B8;        
-  --accent:#8C6A55;      
+  --sub:#EAE0D5;        
+  --accent:#D4B8A3;      
   --txt:#3E2F25;        
+  --txt-light:#8D7B6F;
 }
 *{box-sizing:border-box;font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",Arial,sans-serif}
-body{margin:0;background:linear-gradient(180deg,#fff7ef,#fff);color:var(--txt);line-height:1.6}
-.wrap{max-width:900px;margin:0 auto;padding:16px}
-header{background:linear-gradient(135deg,#6B5646,#4A3A2E);color:#fff;border-radius:22px;padding:32px 20px;margin-bottom:18px;text-align:center}
-header h1{margin:0 0 6px;font-size:28px}
-header p{margin:0;opacity:.95;font-weight:300}
+body{margin:0;background:linear-gradient(180deg,#FDFBF9,#F2ECE6);color:var(--txt);line-height:1.7; word-break: keep-all;}
 
-.card{background:#fff;border-radius:20px;padding:24px;margin-bottom:16px;box-shadow:0 12px 28px rgba(0,0,0,.05)}
+.wrap{max-width:800px;margin:0 auto;padding:20px;min-height:100vh;}
+
+header{text-align:center; margin-bottom:30px; padding-top:20px;}
+header h1{margin:0 0 8px;font-size:26px; color:var(--pri-dark); letter-spacing:-0.5px;}
+header p{margin:0; color:var(--txt-light); font-size:14px; font-weight:400;}
+
+.card{background:#fff;border-radius:24px;padding:32px 24px;margin-bottom:20px;box-shadow:0 10px 30px rgba(107, 86, 70, 0.08); transition: transform 0.3s ease;}
 .center{text-align:center}
 
-input,select,button{width:100%;max-width:420px;padding:16px;border-radius:14px;font-size:16px;outline:none}
-input,select{border:2px dashed var(--sub);background:#fafafa;transition:border .3s}
-input:focus,select:focus{border-color:var(--pri)}
-button{border:0;cursor:pointer;transition:transform .1s}
+.form-group {margin-bottom: 24px; text-align: left;}
+.form-label {display:block; margin-bottom:8px; font-weight:600; font-size:14px; color:var(--pri);}
+input,select,button{width:100%;padding:16px;border-radius:16px;font-size:16px;outline:none; appearance: none;}
+input,select{border:2px solid var(--sub);background:#FCFAF8;transition:all .3s; color:var(--txt);}
+input:focus,select:focus{border-color:var(--pri); background:#fff;}
+
+button{border:0;cursor:pointer;transition:transform .1s, box-shadow .3s;}
 button:active{transform:scale(0.98)}
-.primary{background:var(--pri-dark);color:#fff;font-weight:700;font-size:17px}
+.primary{background:var(--pri-dark);color:#fff;font-weight:700;font-size:17px; box-shadow: 0 4px 14px rgba(74, 58, 46, 0.2);}
+.primary:hover {background:var(--pri);}
+.secondary{background:#fff; border:2px solid var(--sub); color:var(--pri); font-weight:600; font-size:15px; margin-top:12px;}
+.secondary:hover{background:var(--bg); border-color:var(--pri);}
 
-/* 공유하기 버튼 스타일 (보조 버튼) */
-.secondary{background:#fff; border:2px solid #D6C6B8; color:#6B5646; font-weight:600; font-size:16px;}
-.secondary:hover{background:#F4EDE6; border-color:#6B5646;}
+.progress-container {margin-bottom: 30px;}
+.progress-text {text-align: right; font-size: 13px; font-weight: 600; color: var(--pri); margin-bottom: 6px;}
+.progress{height:6px;background:#eee;border-radius:999px;overflow:hidden;}
+.bar{height:100%;width:0;background:var(--pri);transition:width .4s ease;}
 
-.progress{height:8px;background:#eee;border-radius:999px;overflow:hidden;margin-bottom:24px}
-.bar{height:100%;width:0;background:linear-gradient(90deg,#6B5646,#8C6A55);transition:width .4s ease}
+.q-badge {display:inline-block; background:var(--bg); color:var(--pri); padding:4px 10px; border-radius:6px; font-size:12px; font-weight:700; margin-bottom:12px;}
+.q h3{font-size:21px;margin:0 0 24px;line-height:1.45; font-weight:700; color:var(--pri-dark);}
 
-.q h3{font-size:20px;margin-bottom:16px;line-height:1.4;word-break:keep-all}
-.opt{padding:16px;border-radius:16px;border:2px solid #f0f0f0;margin-bottom:12px;cursor:pointer;transition:all .2s;font-size:15px;background:#fff}
-.opt:hover{border-color:var(--pri);background:#F4EDE6;color:var(--pri-dark);font-weight:600}
+.opt{
+    padding:18px 20px;
+    border-radius:18px;
+    border:2px solid var(--bg);
+    margin-bottom:12px;
+    cursor:pointer;
+    transition:all .2s;
+    font-size:15px;
+    background:#fff;
+    text-align:left; 
+    line-height:1.45;
+    color: #555;
+    position: relative;
+}
+.opt:hover{border-color:var(--pri);background:#FFFCF9;color:var(--pri-dark);font-weight:600; transform:translateY(-2px); box-shadow:0 4px 12px rgba(107, 86, 70, 0.1);}
 
-.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:#fff0ea;color:#ff7043;font-size:13px;font-weight:800;margin-bottom:12px;letter-spacing:0.5px}
+.badge{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--bg);color:var(--pri-dark);font-size:13px;font-weight:800;margin-bottom:16px; letter-spacing:0.5px; border:1px solid var(--sub);}
 
-/* 결과 이미지 스타일 */
 .mbti-img-box{
-    max-width: 100%; 
-    margin: 24px auto; 
-    border-radius: 20px; 
+    width: 100%;
+    max-width: 320px; 
+    margin: 0 auto 30px; 
+    border-radius: 24px; 
     overflow: hidden; 
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     border: 1px solid #eee;
+    background: #fff;
+    position: relative;
+}
+.mbti-img-box::after {
+    content:''; display:block; padding-bottom:100%;
 }
 .mbti-img-box img{
-    width:100%;
-    height:auto;
-    display:block;
+    position: absolute; width:100%; height:100%; object-fit: cover; left:0; top:0;
 }
 
-/* 결과 텍스트 스타일 */
+/* 확장된 결과 텍스트 스타일 */
 .result-content {
     text-align: left;
     white-space: pre-wrap;
     color: #444;
     font-size: 15px;
-    background: #f9f9f9;
-    padding: 24px;
-    border-radius: 16px;
-    border: 1px solid #eee;
-    margin-top: 20px;
+    background: #FCFAF8;
+    padding: 32px 24px;
+    border-radius: 20px;
+    border: 1px solid var(--sub);
+    margin-top: 24px;
+    line-height: 1.8;
 }
+.result-section-title {
+    color: var(--pri-dark);
+    font-weight: 700;
+    font-size: 17px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    display: block;
+    border-bottom: 2px solid var(--sub);
+    padding-bottom: 6px;
+}
+.result-section-title:first-child { margin-top: 0; }
 
-.cta{margin-top:30px}
-.cta a{text-decoration:none}
-.cta button{width:100%; box-shadow: 0 4px 14px rgba(107, 86, 70, 0.3);}
+.marketing-box {
+    background: linear-gradient(135deg, #FFF7EF 0%, #FFFFFF 100%);
+    padding: 24px;
+    border-radius: 20px;
+    margin-top: 24px;
+    text-align: center;
+    border: 1px solid #FFE0B2;
+    box-shadow: 0 4px 12px rgba(255, 167, 38, 0.1);
+}
+.marketing-text {margin:0; font-size:15px; line-height:1.6; color:#5D4037;}
 
-/* 토스트 메시지 스타일 */
 .toast-msg {
     visibility: hidden;
     min-width: 280px;
-    background-color: rgba(62, 47, 37, 0.95);
+    background-color: rgba(74, 58, 46, 0.95);
     color: #fff;
     text-align: center;
     border-radius: 50px;
@@ -91,17 +137,17 @@ button:active{transform:scale(0.98)}
     left: 50%;
     bottom: 30px;
     transform: translateX(-50%);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     line-height: 1.4;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     opacity: 0;
     transition: opacity 0.3s, bottom 0.3s;
 }
 .toast-msg.show {
     visibility: visible;
     opacity: 1;
-    bottom: 60px;
+    bottom: 50px;
 }
 </style>
 </head>
@@ -110,518 +156,535 @@ button:active{transform:scale(0.98)}
 <div id="toast" class="toast-msg">💡 정확한 처방을 위해<br>구체적인 반응을 선택해 주시면 좋아요.</div>
 
 <div class="wrap">
-<header>
-  <h1>🐶 폴라밸런스 멍BTI</h1>
-  <p>MBTI는 재미로 보지만, 아이의 스트레스는 다큐입니다.</p>
-</header>
+    <header>
+      <h1>🐶 폴라밸런스 멍BTI</h1>
+      <p>MBTI는 재미로 보지만, 아이의 스트레스는 다큐입니다.</p>
+    </header>
 
-<div id="screen-start" class="card center">
-  <h2>우리 아이 정보 입력</h2>
-  <div style="margin-bottom:20px; color:#666; font-size:14px;">
-    평소 아이의 행동을 떠올리며<br>가장 솔직하게 답변해 주세요.
-  </div>
-  <input id="dogName" placeholder="강아지 이름 (예: 폴라)" style="margin-bottom:10px">
-  <select id="dogBreed" style="margin-bottom:20px">
-    <option value="">견종을 선택하세요</option>
-    <optgroup label="🐾 소형견">
-      <option>말티즈</option><option>푸들 (토이푸들)</option><option>포메라니안</option>
-      <option>치와와</option><option>요크셔테리어</option><option>시츄</option>
-      <option>페키니즈</option><option>비숑프리제</option><option>파피용</option>
-      <option>미니어처 핀셔</option><option>닥스훈트</option><option>프렌치 불독</option>
-      <option>보스턴 테리어</option><option>미니어처 슈나우저</option>
-      <option>퍼그</option><option>잭 러셀 테리어</option><option>코커스패니얼(소형)</option>
-    </optgroup>
-    <optgroup label="🐾 중형견">
-      <option>비글</option><option>웰시코기</option><option>시바견</option><option>진돗개</option>
-      <option>보더콜리</option><option>코커 스패니얼</option><option>불독</option>
-      <option>사모예드(중대형)</option><option>차우차우</option><option>스피츠</option>
-      <option>아메리칸 코카 스패니얼</option><option>베들링턴 테리어</option>
-      <option>불테리어</option><option>스태퍼드셔 불테리어</option>
-    </optgroup>
-    <optgroup label="🐾 대형견">
-      <option>골든 리트리버</option><option>래브라도 리트리버</option>
-      <option>저먼 셰퍼드</option><option>로트와일러</option><option>도베르만</option>
-      <option>알래스칸 말라뮤트</option><option>그레이트 피레니즈</option>
-      <option>세인트 버나드</option><option>버니즈 마운틴 독</option>
-      <option>아프간 하운드</option><option>아이리시 울프하운드</option>
-      <option>티베탄 마스티프</option><option>뉴펀들랜드</option>
-    </optgroup>
-    <optgroup label="🐾 믹스견">
-      <option>말티푸 (말티즈 + 푸들)</option>
-      <option>골든두들 (골든리트리버 + 푸들)</option>
-      <option>라브라도들</option><option>치와푸</option>
-      <option>포메푸</option><option>시츄푸</option><option>코카푸</option>
-      <option>해당없음 / 믹스견</option>
-    </optgroup>
-  </select>
-  <button class="primary" onclick="start()">무료 진단 시작하기</button>
-</div>
+    <div id="screen-start" class="card center">
+      <div style="margin-bottom:30px;">
+          <h2 style="font-size:22px; margin-bottom:10px;">우리 아이 마음 진단서</h2>
+          <p style="font-size:15px; color:#666;">평소 아이의 행동을 떠올리며<br>가장 솔직하게 답변해 주세요.</p>
+      </div>
+      <div class="form-group">
+          <label class="form-label">아이 이름</label>
+          <input id="dogName" placeholder="예: 폴라">
+      </div>
+      <div class="form-group">
+          <label class="form-label">견종</label>
+          <select id="dogBreed">
+            <option value="">견종을 선택하세요</option>
+            <optgroup label="🐾 소형견">
+              <option>말티즈</option><option>푸들 (토이푸들)</option><option>포메라니안</option>
+              <option>치와와</option><option>요크셔테리어</option><option>시츄</option>
+              <option>페키니즈</option><option>비숑프리제</option><option>파피용</option>
+              <option>미니어처 핀셔</option><option>닥스훈트</option><option>프렌치 불독</option>
+              <option>보스턴 테리어</option><option>미니어처 슈나우저</option>
+              <option>퍼그</option><option>잭 러셀 테리어</option><option>코커스패니얼(소형)</option>
+            </optgroup>
+            <optgroup label="🐾 중형견">
+              <option>비글</option><option>웰시코기</option><option>시바견</option><option>진돗개</option>
+              <option>보더콜리</option><option>코커 스패니얼</option><option>불독</option>
+              <option>사모예드(중대형)</option><option>차우차우</option><option>스피츠</option>
+              <option>아메리칸 코카 스패니얼</option><option>베들링턴 테리어</option>
+              <option>불테리어</option><option>스태퍼드셔 불테리어</option>
+            </optgroup>
+            <optgroup label="🐾 대형견">
+              <option>골든 리트리버</option><option>래브라도 리트리버</option>
+              <option>저먼 셰퍼드</option><option>로트와일러</option><option>도베르만</option>
+              <option>알래스칸 말라뮤트</option><option>그레이트 피레니즈</option>
+              <option>세인트 버나드</option><option>버니즈 마운틴 독</option>
+              <option>아프간 하운드</option><option>아이리시 울프하운드</option>
+              <option>티베탄 마스티프</option><option>뉴펀들랜드</option>
+            </optgroup>
+            <optgroup label="🐾 믹스견">
+              <option>말티푸 (말티즈 + 푸들)</option>
+              <option>골든두들 (골든리트리버 + 푸들)</option>
+              <option>라브라도들</option><option>치와푸</option>
+              <option>포메푸</option><option>시츄푸</option><option>코카푸</option>
+              <option>해당없음 / 믹스견</option>
+            </optgroup>
+          </select>
+      </div>
+      <button class="primary" onclick="start()">무료 진단 시작하기</button>
+      
+      <p style="margin-top:20px; font-size:13px; color:#ccc; font-weight:400;">
+        Provided by <strong>Polar Balance</strong>
+      </p>
+    </div>
 
-<div id="screen-test" class="card" style="display:none">
-  <div class="progress"><div id="bar" class="bar"></div></div>
-  <div id="question"></div>
-</div>
+    <div id="screen-test" class="card" style="display:none">
+      <div class="progress-container">
+          <div id="progressText" class="progress-text">1 / 12</div>
+          <div class="progress"><div id="bar" class="bar"></div></div>
+      </div>
+      <div id="question"></div>
+    </div>
 
-<div id="screen-result" class="card" style="display:none"></div>
+    <div id="screen-result" class="card" style="display:none"></div>
 </div>
 
 <script>
 const score={E:0,I:0,N:0,S:0,T:0,F:0,P:0,J:0};
 let qi=0,name='',breedName='';
 
-/* 질문 데이터 */
+/* 12문항 정밀 진단 질문지 */
 const Q=[
-{t:"Q1. 외출 준비(옷 입기, 열쇠 챙기기)를 할 때 아이의 반응은?",a:[
-{l:"1. \"다녀오세요~\" 자기 자리에 가서 눕거나 별 반응 없다. (안정형)",s:{I:2}},
-{l:"2. \"나도 데려가!\" 현관 앞을 막거나 안절부절못하며 낑낑거린다. (불안형)",s:{F:1,E:1}},
-{l:"3. 내가 나가자마자 하울링을 하거나 문을 긁는다. (고위험군)",s:{F:2,E:2}},
-{l:"4. 잘 모르겠다 / 상황마다 다르다.",s:{}}
-]},
-{t:"Q2. 평소 '발사탕(발을 핥는 행동)'이나 꼬리 물기를 자주 하나요?",a:[
-{l:"1. 거의 하지 않는다.",s:{S:2}},
-{l:"2. 심심해 보일 때 가끔 핥거나 깨문다. (무료함/습관)",s:{N:1}},
-{l:"3. 발이 축축해질 정도로 자주 핥거나, 빙글빙글 도는 행동을 반복한다. (강박/스트레스)",s:{N:2}},
-{l:"4. 잘 모르겠다 / 애매하다.",s:{}}
-]},
-{t:"Q3. '초인종 소리'나 '택배 기사님' 인기척에 대한 반응은?",a:[
-{l:"1. 귀만 쫑긋하고 짖지 않는다.",s:{S:1,I:1}},
-{l:"2. \"누구세요!\" 한두 번 짖고 주인이 말리면 멈춘다.",s:{E:1}},
-{l:"3. 소리가 들리면 이성을 잃은 듯 짖고, 쉽게 진정되지 않는다. (경계성 예민)",s:{E:2,N:1}},
-{l:"4. 잘 모르겠다.",s:{}}
-]},
-{t:"Q4. 산책 중 낯선 강아지나 사람을 만났을 때?",a:[
-{l:"1. 꼬리를 흔들며 반갑게 인사하거나 무시하고 지나간다.",s:{E:2}},
-{l:"2. 내 뒤로 숨거나 걸음을 멈추고 얼어버린다. (공포/회피)",s:{I:2}},
-{l:"3. 털을 세우고 으르렁거리거나 달려들려고 한다. (방어적 공격성)",s:{T:2}},
-{l:"4. 잘 모르겠다.",s:{}}
-]},
-{t:"Q5. 아이의 평소 수면 스타일은 어떤가요?",a:[
-{l:"1. 배를 까뒤집고 세상 모르고 '떡실신' 한다.",s:{S:1,J:1}},
-{l:"2. 작은 소리에도 벌떡 일어나거나, 자리를 자주 옮긴다.",s:{N:1}},
-{l:"3. 잘 때도 몸을 웅크리고, 눈을 뜨고 자거나 꿈틀거림이 심하다. (긴장 상태)",s:{N:2}},
-{l:"4. 잘 모르겠다.",s:{}}
-]},
-{t:"Q6. 혼자 있을 때 집안 물건(벽지, 휴지, 가구)을 훼손한 적이 있나요?",a:[
-{l:"1. 전혀 없다. 장난감만 가지고 논다.",s:{J:2}},
-{l:"2. 어릴 때는 그랬지만 지금은 가끔 실수만 한다.",s:{P:1}},
-{l:"3. 혼자 두면 휴지통을 뒤지거나 물건을 물어뜯어 놓는다. (불만 표출/파괴)",s:{P:2}},
-{l:"4. 잘 모르겠다.",s:{}}
-]},
-{t:"Q7. 평소 스킨십(빗질, 목욕, 발톱 깎기)을 할 때 반응은?",a:[
-{l:"1. 얌전히 잘 받거나 즐기는 편이다.",s:{F:2}},
-{l:"2. 싫어하지만 간식을 주면 참아낸다.",s:{T:1}},
-{l:"3. 손만 대려 해도 기겁하거나 입질을 하려 한다. (접촉 스트레스/트라우마)",s:{T:2}},
-{l:"4. 잘 모르겠다.",s:{}}
-]},
-{t:"Q8. 최근 들어 이유 없이 구토를 하거나 설사(무른 변)를 한 적이 있나요?",a:[
-{l:"1. 황금 변을 보고 소화력도 좋다.",s:{S:2}},
-{l:"2. 낯선 곳에 가거나 혼나면 가끔 그런다.",s:{N:1}},
-{l:"3. 병원에서는 이상 없다는데 자주 토하거나 변이 묽다. (신경성 위장 장애)",s:{N:2}},
-{l:"4. 잘 모르겠다.",s:{}}
-]},
-{t:"Q9. 우리 아이가 가장 행복해 보일 때는 언제인가요?",a:[
-{l:"1. 넓은 공원을 마음껏 뛰어놀 때 (에너지 발산 욕구)",s:{E:1,P:1}},
-{l:"2. 내 무릎 위에서 편안하게 쓰다듬어질 때 (애정/안정 욕구)",s:{F:2}},
-{l:"3. 맛있는 간식을 먹을 때 (식탐/보상 욕구)",s:{S:2}},
-{l:"4. 잘 모르겠다.",s:{}}
-]},
-{t:"Q10. 견주님이 아이에게 바라는 단 한 가지 소원은?",a:[
-{l:"1. 아프지 않고 튼튼하게 오래 사는 것 (신체 건강)",s:{S:1}},
-{l:"2. 불안해하지 않고 마음 편하게 지내는 것 (정신 건강/안정)",s:{N:1,F:1}},
-{l:"3. 나 없이도 씩씩하게 잘 지내는 것 (독립심)",s:{T:1,I:1}},
-{l:"4. 잘 모르겠다.",s:{}}
-]}
+    {
+        t:"Q1. 산책 나가기 직전, 리드줄을 꺼낼 때 아이의 반응은?",
+        a:[
+            {l:"(A) \"산책이다!!\" 현관으로 우다다 뛰어가며 빙글빙글 돈다.", s:{E:2}},
+            {l:"(B) \"오, 나가니?\" 꼬리만 살랑거리며 차분하게 기다린다.", s:{I:1}},
+            {l:"(C) \"...귀찮아.\" 자던 자리에 계속 누워있거나 도망간다.", s:{I:2}},
+            {l:"(D) 잘 모르겠다 / 그때그때 다르다.", s:{}}
+        ]
+    },
+    {
+        t:"Q2. 산책 중 낯선 강아지 친구를 만났을 때?",
+        a:[
+            {l:"(A) \"안녕! 나랑 놀자!\" 친구에게 바로 돌진하려고 줄을 당긴다.", s:{E:2}},
+            {l:"(B) \"데면데면\" 냄새만 살짝 맡고 쿨하게 제 갈 길 간다.", s:{I:1}},
+            {l:"(C) \"엄마 무서워..\" 내 다리 뒤로 숨거나 안아달라고 한다.", s:{I:2}},
+            {l:"(D) 잘 모르겠다 / 상황마다 다르다.", s:{}}
+        ]
+    },
+    {
+        t:"Q3. 집에 배달 기사님이나 낯선 손님이 왔을 때?",
+        a:[
+            {l:"(A) \"누구세요!!\" 꼬리를 흔들며 격하게 반기거나 짖는다.", s:{E:2}},
+            {l:"(B) 멀리서 \"왔나보다\" 하고 지켜보다가 냄새를 맡으러 온다.", s:{I:1}},
+            {l:"(C) 방이나 구석으로 숨어서 나오지 않는다.", s:{I:2}},
+            {l:"(D) 잘 모르겠다.", s:{}}
+        ]
+    },
+    {
+        t:"Q4. 모두가 잠든 새벽, 작은 부스럭 소리가 들린다면?",
+        a:[
+            {l:"(A) \"드르렁~\" 세상 모르고 배를 까뒤집고 잔다.", s:{S:2}},
+            {l:"(B) (쫑긋) 고개만 들어 소리를 확인하고 다시 잔다.", s:{S:1}},
+            {l:"(C) (벌떡!) 즉시 일어나서 소리 나는 쪽을 향해 짖는다.", s:{N:2}},
+            {l:"(D) 잘 모르겠다.", s:{}}
+        ]
+    },
+    {
+        t:"Q5. 평소 발을 핥거나(발사탕) 꼬리를 무는 행동을 하나요?",
+        a:[
+            {l:"(A) 거의 하지 않는다.", s:{S:2}},
+            {l:"(B) 심심해 보일 때 가끔 한다.", s:{N:1}},
+            {l:"(C) 발이 축축해질 정도로 자주, 집착적으로 한다.", s:{N:2}},
+            {l:"(D) 잘 모르겠다.", s:{}}
+        ]
+    },
+    {
+        t:"Q6. 평소 잠잘 때의 모습은 어떤가요?",
+        a:[
+            {l:"(A) 누가 업어가도 모를 정도로 깊게 푹 잔다.", s:{S:2}},
+            {l:"(B) 작은 소리에도 자주 깨고, 자리를 계속 옮긴다.", s:{N:1}},
+            {l:"(C) 자면서도 끙끙거리거나 몸을 자주 떤다. (꿈을 많이 꿈)", s:{N:2}},
+            {l:"(D) 잘 모르겠다.", s:{}}
+        ]
+    },
+    {
+        t:"Q7. 아이가 실수해서 보호자에게 혼났을 때 반응은?",
+        a:[
+            {l:"(A) \"잘못했어요..\" 시무룩해져서 눈치를 보거나 구석에 간다.", s:{F:2}},
+            {l:"(B) \"뭐 어쩌라고?\" 하품을 하거나 딴청을 피운다.", s:{T:2}},
+            {l:"(C) 뒤돌아서면 까먹고 1분 뒤에 해맑게 다시 온다.", s:{T:1}},
+            {l:"(D) 잘 모르겠다.", s:{}}
+        ]
+    },
+    {
+        t:"Q8. 보호자가 슬프거나 울고 있을 때 아이는?",
+        a:[
+            {l:"(A) 옆에 조용히 와서 앉거나 눈물을 핥아준다.", s:{F:2}},
+            {l:"(B) \"무슨 일 있어?\" 궁금한 표정으로 쳐다만 본다.", s:{T:1}},
+            {l:"(C) 내 감정과 상관없이 자기 장난감을 가져와서 놀자고 한다.", s:{T:2}},
+            {l:"(D) 잘 모르겠다.", s:{}}
+        ]
+    },
+    {
+        t:"Q9. 빗질이나 목욕 등 싫어하는 케어를 할 때?",
+        a:[
+            {l:"(A) 싫지만 엄마가 하니까 얌전히 참아준다.", s:{F:2}},
+            {l:"(B) 간식을 주면 참고, 안 주면 도망간다. (계산적)", s:{T:1}},
+            {l:"(C) \"손 대지 마!\" 으르렁거리거나 입질을 시도한다.", s:{T:2}},
+            {l:"(D) 잘 모르겠다.", s:{}}
+        ]
+    },
+    {
+        t:"Q10. 보호자가 외출 준비(옷 입기)를 할 때 반응은?",
+        a:[
+            {l:"(A) \"다녀와~\" 자기 자리에 가서 눕거나 쳐다만 본다.", s:{J:2}},
+            {l:"(B) 현관 앞에 미리 가서 앉아있거나 가방에 들어간다.", s:{P:1}},
+            {l:"(C) 나가려는 걸 눈치채고 안절부절못하며 낑낑거린다.", s:{P:2}},
+            {l:"(D) 잘 모르겠다.", s:{}}
+        ]
+    },
+    {
+        t:"Q11. 밥 시간이나 산책 시간이 조금 늦어지면?",
+        a:[
+            {l:"(A) 늦어지나 보다 하고 얌전히 기다린다.", s:{J:2}},
+            {l:"(B) 밥그릇을 툭툭 치거나 빤히 쳐다보며 무언의 압박을 준다.", s:{J:1}},
+            {l:"(C) 짖거나 쓰레기통을 뒤지는 등 사고를 친다.", s:{P:2}},
+            {l:"(D) 잘 모르겠다.", s:{}}
+        ]
+    },
+    {
+        t:"Q12. 산책할 때 걷는 스타일은?",
+        a:[
+            {l:"(A) 보호자의 발걸음에 맞춰 나란히 걷는 편이다.", s:{J:2}},
+            {l:"(B) 여기저기 냄새 맡느라 바쁘지만 부르면 온다.", s:{P:1}},
+            {l:"(C) 자기가 가고 싶은 곳으로 무작정 리드줄을 당기며 간다.", s:{P:2}},
+            {l:"(D) 잘 모르겠다.", s:{}}
+        ]
+    }
 ];
 
-/* 심층 분석 결과 텍스트 (4단 구성) */
+/* 심층 분석 리포트 (Safe Wording 적용 버전) */
 const RESULT_TEXT = {
-INTJ: `[분석가형] 용의주도한 전략가 (INTJ)
-"나만의 시간과 공간이 절대적으로 필요한 아이"
+    INTJ: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+지능이 상위 5%에 속하며 독립심이 매우 강한 '전략가' 타입입니다. 보호자와의 유대감은 깊지만, 24시간 붙어있기보다는 서로의 공간을 존중할 때 비로소 안정감을 느낍니다. 낯선 사람이나 강아지에게는 냉소적이거나 무관심한 반응을 보이며, 자신만의 루틴이나 영역이 침범당하는 것을 본능적으로 거부합니다. 겉보기엔 차가워 보일 수 있으나, 내면은 매우 섬세하고 예민한 감각을 지니고 있습니다.
 
-■ 심층 성향 분석 (Deep Analysis)
-지능이 매우 높고 독립심이 강한 '고양이 같은' 성향을 가졌습니다. 보호자와의 유대감은 깊지만, 24시간 붙어있기보다는 서로의 공간을 존중할 때 안정감을 느낍니다. 낯선 사람이나 강아지에게는 냉소적이거나 무관심하며, 자신만의 루틴이나 영역이 침범당하는 것을 극도로 싫어합니다. 겉보기엔 차가워 보일 수 있으나, 내면은 매우 섬세한 아이입니다.
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 예측 불가능성 (Unpredictability):</strong> 갑작스러운 손님 방문, 큰 소음, 예고 없는 이사 등 통제할 수 없는 환경 변화는 아이의 신경을 과도하게 자극하여 만성적인 긴장 상태를 유발합니다.
+<strong>2. 과도한 간섭:</strong> 쉬고 있는데 계속 만지거나 억지로 안으려 하면 강한 거부감을 느끼며, 이때 스트레스 지수가 급격히 상승하여 방어적인 태도를 보일 수 있습니다.
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 예측 불가능한 상황: 갑작스러운 손님 방문, 큰 소음, 예고 없는 이사는 아이를 극도로 예민하게 만듭니다.
-2. 과도한 간섭: 쉬고 있는데 계속 만지거나 억지로 안으려 하면 강한 거부감을 느끼며 코티솔(스트레스 호르몬) 수치가 급격히 상승합니다.
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. '세이프 존(Safe Zone)' 구축:</strong> 켄넬이나 구석진 곳에 아이만의 공간을 확실히 만들고, 그곳에 있을 때는 "절대 건드리지 않는다"는 규칙을 가족 모두가 지켜야 합니다.
+<strong>2. 거리두기 존중:</strong> 억지로 다른 강아지와 어울리게 하는 사회화 훈련은 스트레스가 될 수 있습니다. 멀리서 관찰하는 것만으로도 충분한 사회 활동이 됩니다.
 
-■ 맞춤 행동 교정 솔루션
-1. '안전지대' 보장: 켄넬이나 구석진 곳에 아이만의 공간을 만들고, 그곳에 있을 때는 절대 건드리지 않는 규칙을 만들어주세요.
-2. 거리두기 존중: 억지로 다른 강아지와 어울리게(사회화) 하지 마세요. 멀리서 관찰하는 것만으로도 충분한 사회 활동입니다.
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"예민하게 곤두선 신경을 이완시켜 주는 '진정한 휴식'이 필요합니다."</strong>
+아이는 지금 높은 경계심 때문에 깊은 잠을 자지 못하고 있을 확률이 높습니다. 심신을 차분하게 가라앉히는 릴렉싱 케어를 통해, 아이에게 편안한 꿀잠을 선물해주세요.
 
-■ 폴라밸런스 마인드 처방
-"예민하게 곤두선 신경을 이완시켜 주는 '진정한 휴식'이 필요합니다."
-아이는 지금 경계심 때문에 깊은 잠을 자지 못하고 있을 수 있습니다. 심신을 차분하게 가라앉히는 테라피를 통해, 아이에게 편안한 꿀잠을 선물해주세요.
+👉 <strong>[추천 라인업] 긴장 완화 및 심신 안정 케어</strong>`,
 
-[추천 처방] 긴장 완화 및 심신 안정 케어`,
+    INTP: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+호기심이 왕성하고 관찰력이 뛰어난 '천재형' 강아지입니다. 단순히 몸을 쓰는 활동보다는 새로운 냄새를 맡거나 머리를 쓰는 놀이에서 큰 희열을 느낍니다. 하지만 높은 지능 탓에 지루함을 참지 못하는 성향이 있어, 흥미로운 자극이 없으면 금방 무기력해지거나 한 가지 행동에 집착하는 경향을 보입니다.
 
-INTP: `[분석가형] 논리적인 사색가 (INTP)
-"똑똑한 머리를 쓰지 못하면 마음의 병이 되는 아이"
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 인지적 무료함:</strong> 똑똑한 두뇌를 쓸 곳이 없으면 그 에너지가 내부로 향하여 스트레스로 변질됩니다. 이는 우울감과 유사한 무기력증을 유발할 수 있습니다.
+<strong>2. 반복 행동:</strong> 스트레스를 받으면 자신의 발을 핥거나(발사탕), 꼬리를 물거나, 허공을 멍하니 보는 등 반복적인 습관을 보일 위험이 큽니다.
 
-■ 심층 성향 분석 (Deep Analysis)
-호기심이 왕성하고 관찰력이 뛰어난 '천재형' 강아지입니다. 단순히 몸을 쓰는 활동보다는 냄새를 맡거나 머리를 쓰는 놀이에서 큰 희열을 느낍니다. 하지만 높은 지능 탓에 지루함을 참지 못하는 성향이 있어, 흥미로운 자극이 없으면 금방 무기력해지거나 한 가지 행동에 집착하는 경향을 보입니다.
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 뇌를 깨우는 식사:</strong> 밥을 밥그릇에 그냥 주지 마세요. 노즈워크, 퍼즐 먹이통, 집안 곳곳에 숨겨놓기 등을 통해 '사냥'하듯 먹게 해주세요.
+<strong>2. 산책의 다양화:</strong> 매일 같은 코스는 아이에게 지루합니다. 낯선 길, 새로운 냄새를 맡게 해주는 것이 최고의 스트레스 해소법입니다.
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 지적 무료함: 똑똑한 두뇌를 쓸 곳이 없으면 그 에너지가 스트레스로 변질됩니다.
-2. 강박 행동(OCD): 스트레스를 받으면 자신의 발을 핥거나(발사탕), 꼬리를 물거나, 허공을 보는 등 반복적인 강박 행동을 보일 위험이 큽니다.
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"무의식적인 반복 행동을 멈추고 뇌의 피로도를 낮춰야 합니다."</strong>
+무료함은 이 아이에게 고통입니다. 반복 행동으로 약해진 피부와 마음을 케어하고, 과부하 걸린 뇌가 쉴 수 있는 안정적인 상태를 만들어주세요.
 
-■ 맞춤 행동 교정 솔루션
-1. 뇌를 깨우는 식사: 밥을 밥그릇에 그냥 주지 마세요. 노즈워크, 퍼즐 먹이통, 숨겨놓기 등을 통해 '사냥'하듯 먹게 해주세요.
-2. 산책의 질 향상: 매일 같은 코스는 금물입니다. 낯선 길, 새로운 냄새를 맡게 해주는 것이 최고의 스트레스 해소법입니다.
+👉 <strong>[추천 라인업] 스트레스성 반복 행동 관리 및 두뇌 케어</strong>`,
 
-■ 폴라밸런스 마인드 처방
-"무의식적인 반복 행동을 멈추고 뇌의 피로도를 낮춰야 합니다."
-무료함은 아이에게 고통입니다. 반복 행동으로 망가진 피부와 마음을 케어하고, 뇌가 쉴 수 있는 안정적인 상태를 만들어주세요.
+    ENTJ: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+선천적인 '우두머리(Alpha)' 기질을 타고난 카리스마 리더입니다. 자기주장이 확실하고 고집이 세며, 산책 시에도 항상 앞장서서 걷는 것을 좋아합니다. 다른 강아지들을 만나면 기선 제압을 하려 하거나, 심지어 보호자를 자신이 지켜야 할 존재(혹은 부하)로 인식하여 상황을 통제하려 들기도 합니다.
 
-[추천 처방] 스트레스성 반복 행동 완화 케어`,
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 통제 불가능성:</strong> 목줄로 행동이 제약되거나, 자신의 뜻대로 상황이 흘러가지 않을 때 급격한 '좌절감'과 '분노'를 느낍니다.
+<strong>2. 억압에 대한 반발:</strong> 강압적인 훈육이나 체벌은 오히려 아이의 공격성과 반항심을 자극하여 문제 행동을 악화시킵니다.
 
-ENTJ: `[분석가형] 대담한 통솔자 (ENTJ)
-"내가 바로 이 구역의 리더! 카리스마 대장"
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 리더십 재정립:</strong> '기다려', '앉아', '눈 맞춤' 훈련을 통해 보호자가 리더임을 부드럽게, 그러나 단호하게 인식시켜 주세요.
+<strong>2. 에너지 발산 규칙:</strong> 터그 놀이처럼 에너지를 폭발적으로 해소하는 놀이가 필요하지만, 놀이의 시작과 끝은 반드시 보호자가 결정해야 합니다.
 
-■ 심층 성향 분석 (Deep Analysis)
-선천적인 '우두머리(Alpha)' 기질을 타고났습니다. 자기주장이 확실하고 고집이 세며, 산책 시에도 앞장서서 걷는 것을 좋아합니다. 다른 강아지들을 만나면 제압하려 하거나, 심지어 보호자를 자신이 지켜야 할 존재(혹은 부하)로 인식하여 통제하려 들기도 합니다.
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"지나치게 높은 텐션과 흥분도를 가라앉혀야 합니다."</strong>
+항상 전투 태세인 아이의 뇌는 과열되어 있습니다. 흥분을 조절하고 차분하게 이완하는 법을 알려주는 것이 장기적인 건강을 지키는 길입니다.
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 통제 불가능 상황: 목줄로 행동이 제약되거나, 자신의 뜻대로 상황이 흘러가지 않을 때 급격한 '좌절감'과 '분노'를 느낍니다.
-2. 억압에 대한 반발: 강압적인 훈육은 오히려 아이의 공격성을 자극할 수 있습니다.
+👉 <strong>[추천 라인업] 흥분 조절 및 차분한 휴식 유도</strong>`,
 
-■ 맞춤 행동 교정 솔루션
-1. 리더십 재정립: '기다려', '앉아', '눈 맞춤' 훈련을 통해 보호자가 리더임을 부드럽게 인식시켜 주세요.
-2. 에너지 발산: 터그 놀이처럼 에너지를 폭발적으로 해소하는 놀이가 필요하지만, 놀이의 시작과 끝은 반드시 보호자가 결정해야 합니다.
+    ENTP: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+두뇌 회전이 빠르고 에너지가 넘치는 '장난꾸러기 발명가'입니다. 금지된 행동을 할 때 보호자의 반응을 즐기는 경향이 있습니다. "하지 마!"라고 하면 더 신나서 하는 청개구리 같은 성격으로, 창의적인 방법으로 집안을 어지럽히는 능력자입니다. 혼나도 금방 잊어버리고 꼬리를 흔드는 낙천적인 면도 있습니다.
 
-■ 폴라밸런스 마인드 처방
-"지나치게 높은 텐션과 흥분도를 가라앉혀야 합니다."
-항상 전투 태세인 아이의 뇌는 과열되어 있습니다. 흥분을 조절하고 차분하게 이완하는 법을 알려주는 것이 건강을 지키는 길입니다.
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 자유의 억압:</strong> 좁은 공간에 갇히거나, 줄을 짧게 잡고 걷는 산책은 아이에게 답답함을 줍니다.
+<strong>2. 에너지 정체:</strong> 넘치는 에너지를 발산하지 못하면 벽지를 뜯거나 가구를 씹는 행동으로 이어집니다. 이는 나쁜 버릇이 아니라 생리적인 에너지 분출입니다.
 
-[추천 처방] 흥분 조절 및 차분한 휴식 유도`,
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 긍정 강화 훈련:</strong> "안돼"라는 부정어보다, 앉아서 얌전히 기다릴 때 폭풍 칭찬과 보상을 해주는 것이 훨씬 효과적입니다.
+<strong>2. 오프리쉬 활동:</strong> 넓은 공원이나 운동장에서 전력 질주하여 에너지를 100% 소진할 수 있는 시간을 일주일에 한 번은 꼭 마련해 주세요.
 
-ENTP: `[분석가형] 뜨거운 논쟁을 즐기는 변론가 (ENTP)
-"사고 칠 때가 가장 짜릿해! 호기심 대장"
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"산만하고 들뜬 마음을 차분하게 잡아줄 '브레이크'가 필요합니다."</strong>
+아이의 과잉 행동은 단순한 장난이 아니라, 넘치는 에너지를 주체하지 못하는 상태일 수 있습니다. 차분한 집중력을 선물하세요.
 
-■ 심층 성향 분석 (Deep Analysis)
-두뇌 회전이 빠르고 에너지가 넘치는 '장난꾸러기'입니다. 금지된 행동을 할 때 보호자의 반응을 즐기는 경향이 있습니다. "하지 마!"라고 하면 더 신나서 하는 청개구리 같은 성격으로, 창의적인 방법으로 집안을 어지럽히는 능력자입니다. 혼나도 금방 잊어버리는 낙천적인 면도 있습니다.
+👉 <strong>[추천 라인업] 산만함 개선 및 집중력 강화 케어</strong>`,
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 자유의 억압: 좁은 공간에 갇히거나, 줄을 짧게 잡고 걷는 산책은 아이에게 고문과 같습니다.
-2. 에너지 정체: 넘치는 에너지를 발산하지 못하면 벽지를 뜯거나 가구를 씹는 파괴적인 행동으로 이어집니다.
+    INFJ: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+매우 섬세하고 직관력이 뛰어난 '영혼의 단짝'입니다. 보호자와의 정서적 교감을 생명처럼 중요하게 생각하며, 공감 능력이 뛰어나 보호자가 슬프면 아이도 함께 우울해질 정도입니다. 낯선 사람에게는 경계심이 높고 곁을 주지 않지만, 내 가족에게는 무한한 헌신과 사랑을 보여줍니다.
 
-■ 맞춤 행동 교정 솔루션
-1. 긍정 강화 훈련: "안돼"라는 부정어보다, 앉아서 기다릴 때 폭풍 칭찬을 해주는 것이 훨씬 효과적입니다.
-2. 오프리쉬 활동: 넓은 공원이나 운동장에서 전력 질주하여 에너지를 100% 소진할 수 있는 시간을 꼭 마련해 주세요.
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 집안의 불화:</strong> 큰 소리, 부부 싸움, 보호자의 한숨 소리에 가장 큰 타격을 받습니다. 자신이 잘못해서 분위기가 안 좋은지 눈치를 보며 위축됩니다.
+<strong>2. 정서적 피로:</strong> 신체적 활동보다 '감정적 소모'가 큰 타입이라, 특별히 아픈 곳이 없는데도 컨디션이 저조하거나 식욕을 잃을 수 있습니다.
 
-■ 폴라밸런스 마인드 처방
-"산만하고 들뜬 마음을 차분하게 잡아줄 브레이크가 필요합니다."
-아이의 과잉 행동은 단순한 장난이 아니라, 넘치는 도파민을 주체하지 못하는 상태일 수 있습니다. 차분한 집중력을 선물하세요.
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 온화한 화법:</strong> 아이 앞에서는 되도록 차분하고 부드러운 톤으로 말해주세요. 강한 어조나 고성은 아이에게 공포가 됩니다.
+<strong>2. 스킨십 테라피:</strong> 엄격한 훈련보다는 따뜻한 스킨십과 눈 맞춤, 부드러운 마사지가 최고의 교육이자 치유입니다.
 
-[추천 처방] 산만함 개선 및 집중력 강화 케어`,
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"타인의 감정까지 짊어진 아이의 무거운 마음을 편안하게 해주세요."</strong>
+착한 아이일수록 마음의 병이 들기 쉽습니다. 아이가 짊어진 감정의 무게를 덜어주고, 정서적 안정감을 채워주는 것이 시급합니다.
 
-INFJ: `[외교관형] 선의의 옹호자 (INFJ)
-"보호자의 감정을 그대로 비추는 거울"
+👉 <strong>[추천 라인업] 정서적 불안 완화 및 심신 안정</strong>`,
 
-■ 심층 성향 분석 (Deep Analysis)
-매우 섬세하고 직관력이 뛰어난 '영혼의 단짝'입니다. 보호자와의 정서적 교감을 가장 중요하게 생각하며, 공감 능력이 뛰어나 보호자가 슬프면 아이도 함께 우울해질 정도입니다. 낯선 사람에게는 경계심이 높지만, 내 가족에게는 무한한 헌신과 사랑을 보여줍니다.
+    INFP: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+겁이 많고 소심하지만, 마음속엔 깊은 사랑을 품고 있는 '내향형 평화주의자'입니다. 낯선 환경이나 큰 소리에 쉽게 놀라고, 한번 혼나면 오랫동안 마음에 담아두고 주눅이 듭니다. 갈등 상황을 극도로 싫어하여 구석으로 숨어버리는 '회피 성향'을 보입니다. 전형적인 '겁쟁이'지만 내 주인에게만은 애교쟁이입니다.
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 집안의 불화: 큰 소리, 부부 싸움, 보호자의 한숨 소리에 가장 큰 타격을 받습니다. 자신이 잘못해서 분위기가 안 좋은지 눈치를 보며 위축됩니다.
-2. 정서적 피로: 신체적 활동보다 '감정적 소모'가 큰 타입이라 이유 없이 시름시름 앓을 수 있습니다.
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 환경의 변화:</strong> 이사, 가구 배치 변경, 낯선 장소 방문은 아이에게 큰 압박감을 줍니다. 적응하는 데 시간이 오래 걸립니다.
+<strong>2. 청각적 공포:</strong> 천둥소리, 오토바이 소리, 보호자의 고성에 트라우마를 쉽게 가집니다.
 
-■ 맞춤 행동 교정 솔루션
-1. 온화한 화법: 아이 앞에서는 되도록 차분하고 부드러운 톤으로 말해주세요. 강한 어조는 아이에게 공포가 됩니다.
-2. 스킨십 테라피: 훈련보다는 따뜻한 스킨십과 눈 맞춤, 부드러운 마사지가 최고의 교육이자 치유입니다.
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 기다림의 미학:</strong> 억지로 적응시키려 하지 말고, 아이가 스스로 냄새를 맡고 다가올 때까지 인내심을 갖고 기다려 주세요.
+<strong>2. 안전한 방공호:</strong> 켄넬이나 하우스는 아이에게 감옥이 아닌, 세상에서 제일 안전한 '방공호'로 인식시켜 줘야 합니다.
 
-■ 폴라밸런스 마인드 처방
-"타인의 감정까지 짊어진 아이의 무거운 마음을 편안하게 해주세요."
-착한 아이일수록 속병이 듭니다. 아이가 짊어진 감정의 무게를 덜어주고, 정서적 안정감을 채워주는 것이 시급합니다.
-
-[추천 처방] 정서적 불안 완화 및 심신 안정`,
-
-INFP: `[외교관형] 열정적인 중재자 (INFP)
-"유리멘탈을 가진 소심한 평화주의자"
-
-■ 심층 성향 분석 (Deep Analysis)
-겁이 많고 소심하지만, 마음속엔 깊은 사랑을 품고 있습니다. 낯선 환경이나 큰 소리에 쉽게 놀라고, 한번 혼나면 오랫동안 마음에 담아두고 주눅이 듭니다. 갈등 상황을 극도로 싫어하여 구석으로 숨어버리는 '회피 성향'을 보입니다. 전형적인 '내향형 겁쟁이'지만 내 주인에게만은 애교쟁이입니다.
-
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 환경의 변화: 이사, 가구 배치 변경, 낯선 장소 방문은 아이에게 큰 압박감을 줍니다.
-2. 큰 소리: 천둥소리, 오토바이 소리, 보호자의 고성에 트라우마를 쉽게 가집니다.
-
-■ 맞춤 행동 교정 솔루션
-1. 기다림의 미학: 억지로 적응시키려 하지 말고, 아이가 스스로 냄새를 맡고 다가올 때까지 인내심을 갖고 기다려 주세요.
-2. 안전한 방공호: 켄넬이나 하우스는 아이에게 감옥이 아닌, 세상에서 제일 안전한 '방공호'로 인식시켜 줘야 합니다.
-
-■ 폴라밸런스 마인드 처방
-"작은 소리에도 놀라 콩닥거리는 가슴을 진정시켜야 합니다."
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"작은 소리에도 놀라 콩닥거리는 가슴을 진정시켜야 합니다."</strong>
 세상은 무서운 곳이 아니라는 것을 알려주세요. 놀란 가슴을 다독이고 용기를 심어주는 세심한 케어가 필요합니다.
 
-[추천 처방] 겁 많은 아이를 위한 용기 충전 케어`,
+👉 <strong>[추천 라인업] 겁 많은 아이를 위한 용기 충전 케어</strong>`,
 
-ENFJ: `[외교관형] 정의로운 사회운동가 (ENFJ)
-"사랑 없이는 못 사는 애정결핍 사랑둥이"
+    ENFJ: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+사람을 너무나 좋아하고, 세상 모든 이에게 사랑받고 싶어 하는 '애정결핍형 천사'입니다. 칭찬받는 것을 삶의 낙으로 여기며, 항상 보호자의 기분을 살피고 위로하려 듭니다. 눈치가 빠르고 사회성이 좋아 보이지만, 사실은 그만큼 외로움을 많이 타고 보호자에게 의존적인 성격입니다.
 
-■ 심층 성향 분석 (Deep Analysis)
-사람을 너무나 좋아하고, 세상 모든 이에게 사랑받고 싶어 합니다. 칭찬받는 것을 삶의 낙으로 여기며, 항상 보호자의 기분을 살피고 위로하려 듭니다. 눈치가 빠르고 사회성이 좋아 보이지만, 사실은 그만큼 외로움을 많이 타고 의존적인 성격입니다.
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 무관심:</strong> 보호자가 바빠서 놀아주지 않거나 눈을 맞춰주지 않으면, 자신이 버림받았다고 느낄 수 있습니다.
+<strong>2. 소외감:</strong> 이는 곧 분리불안, 하울링, 의미 없는 짖음으로 표현됩니다. 이 아이에게 관심은 곧 생존입니다.
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 무관심: 보호자가 바빠서 놀아주지 않거나 눈을 맞춰주지 않으면, 자신이 버림받았다고 느낄 수 있습니다.
-2. 소외감: 이는 곧 분리불안, 하울링, 의미 없는 짖음으로 표현됩니다. 관심이 곧 생존입니다.
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 몰입의 시간:</strong> 하루 종일 같이 있는 것보다, 하루 10분이라도 온전히 아이에게만 집중해서 놀아주는 '퀄리티 타임'을 가지세요.
+<strong>2. 쿨한 작별:</strong> 외출 전에는 과도한 인사를 피하고, 무심하게 나가는 것이 분리불안 예방에 도움이 됩니다.
 
-■ 맞춤 행동 교정 솔루션
-1. 몰입의 시간: 하루 종일 같이 있는 것보다, 하루 10분이라도 온전히 아이에게만 집중해서 놀아주는 '퀄리티 타임'을 가지세요.
-2. 쿨한 작별: 외출 전에는 과도한 인사를 피하고, 무심하게 나가는 것이 분리불안 예방에 도움이 됩니다.
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"혼자서도 불안하지 않도록 마음의 빈자리를 꽉 채워주세요."</strong>
+사랑받고 싶어 하는 마음이 병적인 불안으로 변하지 않게 도와주세요. 정서적 만족감을 높여주면 분리불안은 자연스럽게 사라집니다.
 
-■ 폴라밸런스 마인드 처방
-"혼자서도 불안하지 않도록 마음의 빈자리를 꽉 채워주세요."
-사랑받고 싶어 하는 마음이 불안으로 변하지 않게 도와주세요. 정서적 만족감을 높여주면 분리불안은 자연스럽게 사라집니다.
+👉 <strong>[추천 라인업] 분리불안 관리 및 정서적 만족감 증대</strong>`,
 
-[추천 처방] 분리불안 완화 및 정서적 만족감 증대`,
+    ENFP: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+낙천적이고 에너지가 넘쳐흐르는 '해피 바이러스'입니다. 산책을 나가면 모든 강아지와 친구가 되어야 직성이 풀리고, 호기심이 많아 한시도 가만히 있지 않습니다. 긍정적이지만 감정 기복이 심해, 신나게 놀다가도 갑자기 시무룩해지거나, 보호자의 작은 꾸중에도 세상이 무너진 듯 슬퍼하는 종잡을 수 없는 매력이 있습니다.
 
-ENFP: `[외교관형] 재기발랄한 활동가 (ENFP)
-"세상은 나의 놀이터! 24시간 에너자이저"
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 고립과 심심함:</strong> 혼자 집에 남겨지는 것을 극도로 싫어하며, '분리불안 고위험군'에 속합니다.
+<strong>2. 욕구 불만:</strong> 활동 욕구가 해소되지 않으면 집안을 엉망으로 만들거나 자신의 꼬리를 무는 등 이상 행동을 보입니다.
 
-■ 심층 성향 분석 (Deep Analysis)
-낙천적이고 에너지가 넘쳐흐르는 '해피 바이러스'입니다. 산책을 나가면 모든 강아지와 친구가 되어야 직성이 풀리고, 호기심이 많아 한시도 가만히 있지 않습니다. 긍정적이지만 감정 기복이 심해, 신나게 놀다가도 갑자기 시무룩해지는 등 종잡을 수 없는 매력이 있습니다.
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 다이내믹 산책:</strong> 단순히 걷기보다는, '달리기'나 '새로운 친구 만나기' 등 활동적인 요소를 넣어주세요.
+<strong>2. 노즈워크 생활화:</strong> 집에서는 간식을 곳곳에 숨겨두어 보물찾기를 하게 함으로써, 혼자 있는 시간을 즐겁게 만들어주세요.
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 고립과 심심함: 혼자 집에 남겨지는 것을 극도로 싫어하며, 분리불안 고위험군에 속합니다.
-2. 욕구 불만: 활동 욕구가 해소되지 않으면 집안을 엉망으로 만들거나 자신의 꼬리를 무는 등 이상 행동을 보입니다.
-
-■ 맞춤 행동 교정 솔루션
-1. 다이내믹 산책: 단순히 걷기보다는, '달리기'나 '새로운 친구 만나기' 등 활동적인 요소를 넣어주세요.
-2. 노즈워크 생활화: 집에서는 간식을 곳곳에 숨겨두어 보물찾기를 하게 함으로써, 혼자 있는 시간을 즐겁게 만들어주세요.
-
-■ 폴라밸런스 마인드 처방
-"롤러코스터 같은 감정 기복을 잡아주고 차분함을 선물하세요."
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"롤러코스터 같은 감정 기복을 잡아주고 차분함을 선물하세요."</strong>
 외로움은 아이에게 가장 큰 독입니다. 혼자서도 씩씩하게 기다릴 수 있는 마음의 근육을 길러주세요.
 
-[추천 처방] 과잉 행동 교정 및 정서 안정 케어`,
+👉 <strong>[추천 라인업] 과잉 행동 조절 및 정서 안정 케어</strong>`,
 
-ISTJ: `[관리자형] 청렴결백한 논리주의자 (ISTJ)
-"규칙과 루틴이 생명인 엄격한 선비님"
+    ISTJ: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+매우 신중하고 조용하며 인내심이 강한 '원칙주의자'입니다. 정해진 시간에 밥을 먹고, 정해진 코스로 산책하는 것을 좋아합니다. 예측 가능한 상황에서 안정감을 느끼며, 충성심이 강해 보호자의 말을 잘 따르는 편입니다. 변화보다는 안정을 추구하는 '보수적인 성향'입니다.
 
-■ 심층 성향 분석 (Deep Analysis)
-매우 신중하고 조용하며 인내심이 강합니다. 정해진 시간에 밥을 먹고, 정해진 코스로 산책하는 것을 좋아합니다. 예측 가능한 상황에서 안정감을 느끼며, 충성심이 강해 보호자의 말을 잘 따르는 편입니다. 변화보다는 안정을 추구하는 '보수적인 성향'입니다.
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 루틴의 붕괴:</strong> 밥 시간이 늦어지거나, 산책을 거르거나, 집에 낯선 손님이 와서 북적거리는 상황을 힘들어합니다.
+<strong>2. 내재된 불안:</strong> 내성적이라 스트레스를 겉으로 표현하지 않고 속으로 삭히다가, 위장 장애(구토, 설사) 등 신체 증상으로 나타납니다.
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 루틴의 붕괴: 밥 시간이 늦어지거나, 산책을 거르거나, 집에 낯선 손님이 와서 북적거리는 상황을 힘들어합니다.
-2. 내재된 불안: 내성적이라 스트레스를 겉으로 표현하지 않고 속으로 삭히다가, 위장 장애(구토, 설사) 등 신체 증상으로 나타납니다.
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 규칙 준수:</strong> 규칙적인 생활 패턴을 유지해 주는 것이 아이에게 최고의 선물입니다.
+<strong>2. 점진적 변화:</strong> 사료를 바꾸거나 환경을 바꿀 때는, 아주 천천히 예고를 하며 적응할 시간을 줘야 합니다.
 
-■ 맞춤 행동 교정 솔루션
-1. 규칙 준수: 규칙적인 생활 패턴을 유지해 주는 것이 아이에게 최고의 선물입니다.
-2. 점진적 변화: 사료를 바꾸거나 환경을 바꿀 때는, 아주 천천히 예고를 하며 적응할 시간을 줘야 합니다.
-
-■ 폴라밸런스 마인드 처방
-"작은 변화에도 예민하게 반응하는 장과 마음을 편안하게 해주세요."
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"작은 변화에도 예민하게 반응하는 장과 마음을 편안하게 해주세요."</strong>
 겉보기에 얌전하다고 해서 괜찮은 것이 아닙니다. 속으로 앓고 있을 아이의 예민한 속마음을 세심하게 케어해야 합니다.
 
-[추천 처방] 예민한 성격 완화 및 소화기 안정 케어`,
+👉 <strong>[추천 라인업] 예민한 성격 관리 및 소화기 안정 케어</strong>`,
 
-ISFJ: `[관리자형] 용감한 수호자 (ISFJ)
-"아파도 내색하지 않는 속 깊은 천사"
+    ISFJ: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+가족에 대한 애착이 깊고 헌신적인 '수호자'입니다. 말썽을 피우는 일이 거의 없고, 보호자가 싫어하는 행동은 눈치껏 하지 않습니다. 참을성이 매우 강해서 주위에서 '순둥이'라고 칭찬하지만, 사실은 그만큼 참고 억누르고 있을 가능성이 높습니다.
 
-■ 심층 성향 분석 (Deep Analysis)
-가족에 대한 애착이 깊고 헌신적입니다. 말썽을 피우는 일이 거의 없고, 보호자가 싫어하는 행동은 눈치껏 하지 않습니다. 참을성이 매우 강해서 주위에서 '순둥이'라고 칭찬하지만, 사실은 그만큼 참고 억누르고 있을 가능성이 높습니다.
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 과도한 책임감:</strong> 자신이 가족을 지켜야 한다고 생각하거나, 싫어도 참아야 한다고 생각합니다.
+<strong>2. 억압된 감정:</strong> 아프거나 힘들어도 낑낑거리지 않고 숨기는 경우가 많아, 병을 키워서 병원에 가는 경우가 많습니다.
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 과도한 책임감: 자신이 가족을 지켜야 한다고 생각하거나, 싫어도 참아야 한다고 생각합니다.
-2. 억압된 감정: 아프거나 힘들어도 낑낑거리지 않고 숨기는 경우가 많아, 병을 키워서 병원에 가는 경우가 많습니다.
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 세심한 관찰:</strong> 아이가 표현하지 않더라도 몸을 자주 만져보고 세심하게 컨디션을 체크해 주세요.
+<strong>2. 사랑 표현:</strong> 착하다고 그냥 두지 말고, 먼저 다가가서 "고마워, 사랑해"라고 자주 표현해 줘야 합니다.
 
-■ 맞춤 행동 교정 솔루션
-1. 세심한 관찰: 아이가 표현하지 않더라도 몸을 자주 만져보고 세심하게 컨디션을 체크해 주세요.
-2. 사랑 표현: 착하다고 그냥 두지 말고, 먼저 다가가서 "고마워, 사랑해"라고 자주 표현해 줘야 합니다.
-
-■ 폴라밸런스 마인드 처방
-"참는 것이 습관이 된 아이에게 휴식 같은 편안함을 주세요."
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"참는 것이 습관이 된 아이에게 휴식 같은 편안함을 주세요."</strong>
 참는 게 착한 건 아닙니다. 억눌린 스트레스를 해소하고, 면역력을 길러주는 근본적인 케어가 필요합니다.
 
-[추천 처방] 스트레스 누적 해소 및 면역력 강화`,
+👉 <strong>[추천 라인업] 스트레스 누적 해소 및 면역력 강화</strong>`,
 
-ESTJ: `[관리자형] 엄격한 관리자 (ESTJ)
-"우리 집의 안전은 내가 책임진다! 보안관"
+    ESTJ: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+경계심이 강하고 영역 의식이 확실한 '보안관'입니다. 작은 발자국 소리에도 즉각 반응하며 짖음으로 알립니다. 자신이 집안의 질서를 잡아야 한다고 생각하며, 때로는 보호자조차 통제하려 들 때가 있습니다. 책임감이 강한 만큼 피로도도 높습니다.
 
-■ 심층 성향 분석 (Deep Analysis)
-경계심이 강하고 영역 의식이 확실합니다. 작은 발자국 소리에도 즉각 반응하며 짖음으로 알립니다. 자신이 집안의 질서를 잡아야 한다고 생각하며, 때로는 보호자조차 통제하려 들 때가 있습니다. 책임감이 강한 만큼 피로도도 높습니다.
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 경계 태세:</strong> 24시간 집을 지키느라 귀는 항상 열려있습니다. 이로 인해 깊은 잠(REM 수면)을 자지 못합니다.
+<strong>2. 수면 부족:</strong> 뇌가 쉬지 못해 만성적인 피로와 예민함에 시달리고 있을 가능성이 매우 높습니다.
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 경계 태세: 24시간 집을 지키느라 귀는 항상 열려있습니다. 이로 인해 깊은 잠(REM 수면)을 자지 못합니다.
-2. 수면 부족: 뇌가 쉬지 못해 만성적인 피로와 예민함에 시달리고 있을 가능성이 매우 높습니다.
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 백색 소음:</strong> 외부 소음을 차단할 수 있는 라디오나 TV를 약하게 틀어주어 편안하게 잘 수 있는 환경을 만들어 주세요.
+<strong>2. 역할 축소:</strong> "괜찮아, 내가 지킬게"라는 시그널을 주어 아이가 짊어진 보안관의 짐을 덜어주세요.
 
-■ 맞춤 행동 교정 솔루션
-1. 백색 소음: 외부 소음을 차단할 수 있는 라디오나 TV를 약하게 틀어주어 편안하게 잘 수 있는 환경을 만들어 주세요.
-2. 역할 축소: "괜찮아, 내가 지킬게"라는 시그널을 주어 아이가 짊어진 보안관의 짐을 덜어주세요.
-
-■ 폴라밸런스 마인드 처방
-"24시간 곤두선 신경을 끄고 '꿀잠'을 잘 수 있게 도와주세요."
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"24시간 곤두선 신경을 끄고 '꿀잠'을 잘 수 있게 도와주세요."</strong>
 잠만 잘 자도 성격이 바뀝니다. 예민한 감각을 둔하게 만들고 숙면을 유도하는 케어가 절실합니다.
 
-[추천 처방] 숙면 유도 및 과민 반응 완화 케어`,
+👉 <strong>[추천 라인업] 숙면 유도 및 과민 반응 관리</strong>`,
 
-ESFJ: `[관리자형] 사교적인 외교관 (ESFJ)
-"질투는 나의 힘! 관심이 필요한 인싸"
-
-■ 심층 성향 분석 (Deep Analysis)
+    ESFJ: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
 사교적이고 친화력이 좋지만, 그만큼 소유욕과 질투심도 강합니다. 가족들이 모여 있으면 꼭 그 사이에 끼어들어야 하고, 보호자가 다른 강아지를 예뻐하면 참지 못합니다. 분위기 메이커 역할을 자처하며, 끊임없이 사랑을 확인받고 싶어 합니다.
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 비교와 차별: 자신이 관심의 중심에 있지 않을 때 극심한 불안과 스트레스를 느낍니다.
-2. 질투심: 다견 가정의 경우, 다른 강아지에게 간식이 먼저 가면 큰 상처를 받고 공격적으로 변할 수 있습니다.
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 비교와 차별:</strong> 자신이 관심의 중심에 있지 않을 때 극심한 불안과 스트레스를 느낍니다.
+<strong>2. 질투심:</strong> 다견 가정의 경우, 다른 강아지에게 간식이 먼저 가면 큰 상처를 받고 공격적으로 변할 수 있습니다.
 
-■ 맞춤 행동 교정 솔루션
-1. 공평한 사랑: 간식이나 스킨십의 순서를 정하고 반드시 지켜주세요. 규칙이 있으면 질투도 줄어듭니다.
-2. 흥분 조절: 아이가 관심을 끌려고 흥분했을 때는 무시하고, 차분해졌을 때 보상하는 훈련이 필요합니다.
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 공평한 사랑:</strong> 간식이나 스킨십의 순서를 정하고 반드시 지켜주세요. 규칙이 있으면 질투도 줄어듭니다.
+<strong>2. 흥분 조절:</strong> 아이가 관심을 끌려고 흥분했을 때는 무시하고, 차분해졌을 때 보상하는 훈련이 필요합니다.
 
-■ 폴라밸런스 마인드 처방
-"질투는 불안의 또 다른 이름입니다. 마음의 여유를 찾아주세요."
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"질투는 불안의 또 다른 이름입니다. 마음의 여유를 찾아주세요."</strong>
 사랑받고 있음을 확신시켜 주세요. 심리적 만족감을 높여주면 질투 대신 배려를 배우게 될 것입니다.
 
-[추천 처방] 심리적 만족감 증대 및 스트레스 완화`,
+👉 <strong>[추천 라인업] 심리적 만족감 증대 및 스트레스 관리</strong>`,
 
-ISTP: `[탐험가형] 만능 재주꾼 (ISTP)
-"건드리지 마! 시크한 낭만 자객"
+    ISTP: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+독립적이고 과묵하며 쿨한 '고양이 같은' 성격입니다. 혼자 있는 것을 즐기며, 필요할 때만 보호자에게 다가옵니다. 손재주(발재주)가 좋아 문을 열거나 탈출하는 데 능숙합니다. 억지로 하는 스킨십이나 반복적인 훈련을 극도로 싫어합니다.
 
-■ 심층 성향 분석 (Deep Analysis)
-독립적이고 과묵하며 쿨한 성격입니다. 고양이처럼 혼자 있는 것을 즐기며, 필요할 때만 보호자에게 다가옵니다. 손재주(발재주)가 좋아 문을 열거나 탈출하는 데 능숙합니다. 억지로 하는 스킨십이나 반복적인 훈련을 극도로 싫어합니다.
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 신체적 구속:</strong> 껴안거나 뽀뽀하는 행동은 아이에게 사랑이 아니라 공격이나 구속으로 느껴질 수 있습니다.
+<strong>2. 과도한 관리:</strong> 빗질, 목욕, 발톱 깎기 등 억압적인 케어 시간에 가장 큰 스트레스를 받으며 입질을 할 수도 있습니다.
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 신체적 구속: 껴안거나 뽀뽀하는 행동은 아이에게 사랑이 아니라 공격이나 구속으로 느껴질 수 있습니다.
-2. 과도한 관리: 빗질, 목욕, 발톱 깎기 등 억압적인 케어 시간에 가장 큰 스트레스를 받으며 입질을 할 수도 있습니다.
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 밀당의 고수:</strong> 아이가 다가오기 전까지 먼저 만지지 마세요. 아이가 원할 때 만져주는 것이 신뢰 형성의 지름길입니다.
+<strong>2. 긍정 기억 심기:</strong> 싫어하는 케어를 할 때는 반드시 최고의 간식을 제공하여 인식을 바꿔주세요.
 
-■ 맞춤 행동 교정 솔루션
-1. 밀당의 고수: 아이가 다가오기 전까지 먼저 만지지 마세요. 아이가 원할 때 만져주는 것이 신뢰 형성의 지름길입니다.
-2. 긍정 기억 심기: 싫어하는 케어를 할 때는 반드시 '츄르' 같은 최고의 간식을 제공하여 인식을 바꿔주세요.
-
-■ 폴라밸런스 마인드 처방
-"스킨십이 고통이 되지 않도록, 예민한 감각을 편안하게 해주세요."
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"스킨십이 고통이 되지 않도록, 예민한 감각을 편안하게 해주세요."</strong>
 귀찮은 게 아니라 예민한 것입니다. 감각 과민을 완화시켜 주면 훨씬 더 부드러운 아이가 될 수 있습니다.
 
-[추천 처방] 접촉 예민성 완화 및 스트레스 케어`,
+👉 <strong>[추천 라인업] 접촉 예민성 완화 및 스트레스 케어</strong>`,
 
-ISFP: `[탐험가형] 호기심 많은 예술가 (ISFP)
-"침대 밖은 위험해... 귀차니즘 평화주의자"
+    ISFP: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+온순하고 다정하며 싸움을 싫어하는 '평화주의자'입니다. 하지만 '게으름'의 대명사이기도 합니다. 산책을 나가자고 해도 침대에서 꼼짝하지 않으려 하며(일명 '녹은 치즈'), 맛있는 것을 먹고 푹 자는 것을 세상에서 제일 좋아합니다. 현재의 안락함을 추구합니다.
 
-■ 심층 성향 분석 (Deep Analysis)
-온순하고 다정하며 싸움을 싫어하는 평화주의자입니다. 하지만 '게으름'의 대명사이기도 합니다. 산책을 나가자고 해도 침대에서 꼼짝하지 않으려 하며(일명 '녹은 치즈'), 맛있는 것을 먹고 푹 자는 것을 세상에서 제일 좋아합니다. 현재의 안락함을 추구합니다.
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 강요된 활동:</strong> 억지로 산책을 끌고 나가거나, 활동적인 놀이를 강요하면 스트레스를 받습니다.
+<strong>2. 갈등 회피:</strong> 큰 소리나 싸우는 분위기를 감당하지 못해 구석으로 숨어버리며, 스트레스를 받으면 식욕이 떨어지거나 반대로 폭식을 하기도 합니다.
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 강요된 활동: 억지로 산책을 끌고 나가거나, 활동적인 놀이를 강요하면 스트레스를 받습니다.
-2. 갈등 회피: 큰 소리나 싸우는 분위기를 감당하지 못해 구석으로 숨어버리며, 스트레스를 받으면 식욕이 떨어지거나 반대로 폭식을 하기도 합니다.
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 맞춤형 놀이:</strong> 과격한 운동보다는 집에서 하는 가벼운 터그 놀이나 간식 찾기 놀이가 적합합니다.
+<strong>2. 체중 관리:</strong> 움직임이 적어 비만이 되기 쉬우므로 식단 조절에 각별히 신경 써야 합니다.
 
-■ 맞춤 행동 교정 솔루션
-1. 맞춤형 놀이: 과격한 운동보다는 집에서 하는 가벼운 터그 놀이나 간식 찾기 놀이가 적합합니다.
-2. 체중 관리: 움직임이 적어 비만이 되기 쉬우므로 식단 조절에 각별히 신경 써야 합니다.
-
-■ 폴라밸런스 마인드 처방
-"움직이기 싫어하는 아이에게 활력과 생기를 불어넣어 주세요."
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"움직이기 싫어하는 아이에게 활력과 생기를 불어넣어 주세요."</strong>
 단순히 게으른 것이 아니라 활력이 부족한 것일 수 있습니다. 아이가 스스로 움직일 수 있는 에너지를 충전해 주세요.
 
-[추천 처방] 무기력증 개선 및 활력 충전 케어`,
+👉 <strong>[추천 라인업] 무기력증 개선 및 활력 충전 케어</strong>`,
 
-ESTP: `[탐험가형] 모험을 즐기는 사업가 (ESTP)
-"일단 저지르고 본다! 직진 본능 불도저"
+    ESTP: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+겁이 없고 스릴을 즐기는 '모험가'입니다. 호기심이 생기면 물불 안 가리고 돌진하는 성격이라 산책 시 리드줄을 당기는 경우가 많습니다. 지루한 것을 못 참고 끊임없이 새로운 자극을 찾아다닙니다. 사고뭉치지만 미워할 수 없는 쾌활한 매력이 있습니다.
 
-■ 심층 성향 분석 (Deep Analysis)
-겁이 없고 스릴을 즐기는 모험가입니다. 호기심이 생기면 물불 안 가리고 돌진하는 성격이라 산책 시 리드줄을 당기는 경우가 많습니다. 지루한 것을 못 참고 끊임없이 새로운 자극을 찾아다닙니다. 사고뭉치지만 미워할 수 없는 쾌활한 매력이 있습니다.
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 에너지 정체:</strong> 타고난 활동량을 채우지 못하면 집안의 가구를 물어뜯거나 땅을 파는 등 파괴적인 행동으로 스트레스를 풉니다.
+<strong>2. 훈육의 어려움:</strong> 혼나는 것에 대해 크게 타격받지 않고 금방 까먹어서 보호자를 지치게 만듭니다.
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 에너지 정체: 타고난 활동량을 채우지 못하면 집안의 가구를 물어뜯거나 땅을 파는 등 파괴적인 행동으로 스트레스를 풉니다.
-2. 훈육의 어려움: 혼나는 것에 대해 크게 타격받지 않고 금방 까먹어서 보호자를 지치게 만듭니다.
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 고강도 활동:</strong> 단순히 걷는 산책으로는 부족합니다. 등산이나 어질리티 같은 고강도 활동으로 에너지를 완전히 방전시켜야 합니다.
+<strong>2. 바디 블로킹:</strong> 말로 "안돼!"라고 하기보다 몸으로 막아서는 바디 블로킹이 훨씬 효과적입니다.
 
-■ 맞춤 행동 교정 솔루션
-1. 고강도 활동: 단순히 걷는 산책으로는 부족합니다. 등산이나 어질리티 같은 고강도 활동으로 에너지를 완전히 방전시켜야 합니다.
-2. 바디 블로킹: 말로 "안돼!"라고 하기보다 몸으로 막아서는 바디 블로킹이 훨씬 효과적입니다.
-
-■ 폴라밸런스 마인드 처방
-"브레이크 고장 난 폭주 기관차 같은 에너지를 조절해야 합니다."
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"브레이크 고장 난 폭주 기관차 같은 에너지를 조절해야 합니다."</strong>
 에너지가 넘치는 것은 건강하다는 증거지만, 과도하면 독이 됩니다. 차분한 집중력을 길러주는 것이 핵심입니다.
 
-[추천 처방] 과잉 흥분 억제 및 차분한 집중력 강화`,
+👉 <strong>[추천 라인업] 과잉 흥분 억제 및 차분한 집중력 강화</strong>`,
 
-ESFP: `[탐험가형] 자유로운 영혼의 연예인 (ESFP)
-"나 오늘 예뻐? 주목받고 싶은 슈퍼스타"
+    ESFP: `<span class="result-section-title">■ 행동 심리 심층 분석</span>
+천부적인 '연예인' 기질이 있습니다. 사람들의 관심을 즐기고, 예쁜 옷을 입거나 재롱부리는 것을 좋아합니다. 분위기 파악을 잘하고 눈치가 빠르지만, 기분파라서 감정이 롤러코스터처럼 변합니다. 스포트라이트를 받아야 직성이 풀리는 '관종' 끼가 다분합니다.
 
-■ 심층 성향 분석 (Deep Analysis)
-천부적인 연예인 기질이 있습니다. 사람들의 관심을 즐기고, 예쁜 옷을 입거나 재롱부리는 것을 좋아합니다. 분위기 파악을 잘하고 눈치가 빠르지만, 기분파라서 감정이 롤러코스터처럼 변합니다. 스포트라이트를 받아야 직성이 풀리는 '관종(관심종자)' 끼가 다분합니다.
+<span class="result-section-title">■ 숨겨진 스트레스 & 취약점 (Trigger)</span>
+<strong>1. 무관심:</strong> 자신이 주인공이 되지 못하는 상황을 견디지 못합니다.
+<strong>2. 관심 유도 행동:</strong> 관심이 줄어들면 일부러 아픈 척을 하거나(꾀병), 더 크게 짖어서라도 관심을 끌려고 합니다.
 
-■ 숨겨진 스트레스 & 취약점 (Trigger)
-1. 무관심: 자신이 주인공이 되지 못하는 상황을 견디지 못합니다.
-2. 관심 유도 행동: 관심이 줄어들면 일부러 아픈 척을 하거나(꾀병), 더 크게 짖어서라도 관심을 끌려고 합니다.
+<span class="result-section-title">■ 맞춤 행동 코칭 & 팁</span>
+<strong>1. 무시 요법:</strong> 잘못된 행동으로 관심을 끌 때는 철저히 무시하는 것이 정답입니다. 눈길조차 주지 마세요.
+<strong>2. 지루함 타파:</strong> 싫증을 잘 내므로, 다양한 장난감과 새로운 놀이 방식으로 지루할 틈을 주지 마세요.
 
-■ 맞춤 행동 교정 솔루션
-1. 무시 요법: 잘못된 행동으로 관심을 끌 때는 철저히 무시하는 것이 정답입니다. 눈길조차 주지 마세요.
-2. 지루함 타파: 싫증을 잘 내므로, 다양한 장난감과 새로운 놀이 방식으로 지루할 틈을 주지 마세요.
-
-■ 폴라밸런스 마인드 처방
-"들쑥날쑥한 기분 변화를 잡아주고 평정심을 길러주세요."
+<span class="result-section-title">■ 폴라밸런스 케어 솔루션</span>
+<strong>"들쑥날쑥한 기분 변화를 잡아주고 평정심을 길러주세요."</strong>
 기분이 좋았다가 나빴다가 하는 감정 기복은 아이를 지치게 합니다. 멘탈 밸런스를 잡아주어 차분한 아이로 만들어주세요.
 
-[추천 처방] 정서적 불안정 해소 및 멘탈 밸런스 케어`
+👉 <strong>[추천 라인업] 정서적 불안정 해소 및 멘탈 밸런스 케어</strong>`
 };
 
 function start(){
-  name = document.getElementById('dogName').value || '우리 아이';
-  
-  const breedSelect = document.getElementById('dogBreed');
-  const breedVal = breedSelect.value;
-  breedName = breedSelect.options[breedSelect.selectedIndex].text;
+    name = document.getElementById('dogName').value.trim() || '우리 아이';
+    const breedSelect = document.getElementById('dogBreed');
+    const breedVal = breedSelect.value;
+    breedName = breedSelect.options[breedSelect.selectedIndex].text;
 
-  if(!breedVal) {
-    alert("견종을 선택해주세요!");
-    return;
-  }
+    if(!breedVal) {
+        alert("견종을 선택해주세요!");
+        return;
+    }
 
-  document.getElementById('screen-start').style.display='none';
-  document.getElementById('screen-test').style.display='block';
-  render();
+    document.getElementById('screen-start').style.display='none';
+    document.getElementById('screen-test').style.display='block';
+    render();
 }
 
 function render(){
-  const q = Q[qi];
-  document.getElementById('bar').style.width = ((qi) / Q.length * 100) + '%';
+    const q = Q[qi];
+    const progressPercent = ((qi + 1) / Q.length) * 100;
+    
+    document.getElementById('bar').style.width = progressPercent + '%';
+    document.getElementById('progressText').innerText = `${qi + 1} / ${Q.length}`;
 
-  let html = `
-    <div style="text-align:right;font-size:14px;opacity:.6;margin-bottom:8px;font-weight:600">
-      ${qi + 1} / ${Q.length}
-    </div>
-    <div class="q">
-      <h3>${q.t}</h3>
-  `;
+    let html = `
+        <div class="q">
+            <span class="q-badge">질문 ${qi+1}</span>
+            <h3>${q.t}</h3>
+    `;
 
-  q.a.forEach((o,i)=>{
-    html += `<div class="opt" onclick="pick(${i})">${o.l}</div>`;
-  });
+    q.a.forEach((o,i)=>{
+        html += `<div class="opt" onclick="pick(${i})">${o.l}</div>`;
+    });
 
-  html += `</div>`;
-  document.getElementById('question').innerHTML = html;
+    html += `</div>`;
+    document.getElementById('question').innerHTML = html;
 }
 
-// 토스트 메시지
 function showToast() {
-  const x = document.getElementById("toast");
-  x.className = "toast-msg show";
-  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2500);
+    const x = document.getElementById("toast");
+    x.className = "toast-msg show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2500);
 }
 
 function pick(i){
-  if (i === 3) showToast(); // 잘 모르겠다 선택 시 토스트
+    if (i === 3) showToast(); 
 
-  Object.keys(Q[qi].a[i].s).forEach(k=>score[k]+=Q[qi].a[i].s[k]);
-  qi++;
-  qi<Q.length?render():finish();
+    const selectedScore = Q[qi].a[i].s;
+    Object.keys(selectedScore).forEach(k => {
+        score[k] += selectedScore[k];
+    });
+
+    qi++;
+    if(qi < Q.length){
+        render();
+    } else {
+        finish();
+    }
 }
 
-// 공유하기 기능
 async function shareResult() {
-    // 1. 현재 타입과 이름 가져오기 (전역변수가 아니므로 DOM이나 Logic에서 추적 필요하지만, 간단히 Title/URL만 공유)
     const shareData = {
         title: '폴라밸런스 멍BTI',
-        text: `${name}의 멍BTI 결과를 확인해보세요!`,
+        text: `${name}의 마음을 확인해보세요! #멍BTI #폴라밸런스`,
         url: window.location.href
     };
-
     try {
         if (navigator.share) {
-            await navigator.share(shareData); // 네이티브 공유 (모바일)
+            await navigator.share(shareData);
         } else {
-            await navigator.clipboard.writeText(window.location.href); // 클립보드 복사 (PC)
+            await navigator.clipboard.writeText(window.location.href);
             alert('링크가 복사되었습니다! 친구에게 공유해보세요.');
         }
     } catch (err) {
@@ -630,104 +693,75 @@ async function shareResult() {
 }
 
 function finish(){
-  document.getElementById('screen-test').style.display='none';
-  document.getElementById('screen-result').style.display='block';
+    document.getElementById('screen-test').style.display='none';
+    document.getElementById('screen-result').style.display='block';
 
-  // 1. 총점 체크 (무응답 방지)
-  const totalScore = Object.values(score).reduce((a,b) => a + b, 0);
+    const totalScore = Object.values(score).reduce((a,b) => a + b, 0);
 
-  if(totalScore === 0){
-    document.getElementById('screen-result').innerHTML = `
-      <div class="center">
-        <span class="badge" style="background:#eee;color:#888;font-size:14px">분석 불가</span>
-        <h2 style="margin-bottom:30px">${name}의 마음을<br>아직 다 읽지 못했어요 😢</h2>
-        <div class="mbti-img-box" style="background:#f5f5f5; padding:60px 0; border-radius:18px;">
-           <p style="font-size:60px; margin:0;">🤔</p>
+    if(totalScore === 0){
+        document.getElementById('screen-result').innerHTML = `
+            <div class="center">
+                <span class="badge" style="background:#eee;color:#888;font-size:14px;border:none;">분석 불가</span>
+                <h2 style="margin-bottom:20px; color:#555;">${name}의 마음을<br>아직 다 읽지 못했어요 😢</h2>
+                <div style="font-size:60px; margin:40px 0;">🤔</div>
+                <p style="color:#666; font-size:15px; line-height:1.6;">
+                    모든 문항에 "잘 모르겠다"를 선택하셔서<br>
+                    정확한 처방을 내릴 수가 없습니다.<br><br>
+                    진정성 있는 마인드 케어를 위해,<br>
+                    다시 한 번 꼼꼼하게 답해주시겠어요?
+                </p>
+                <div class="cta">
+                    <button class="primary" onclick="location.reload()">🔄 다시 진단하기</button>
+                </div>
+            </div>
+        `;
+        return;
+    }
+
+    const type = 
+        (score.E >= score.I ? 'E' : 'I') +
+        (score.N > score.S ? 'N' : 'S') +
+        (score.F >= score.T ? 'F' : 'T') +
+        (score.P > score.J ? 'P' : 'J');
+    
+    const imgPath = `images/${type}.png`; 
+
+    document.getElementById('screen-result').innerHTML=`
+    <div class="center">
+        <span class="badge">${type} · ${breedName}</span>
+        <h2 style="font-size:24px; margin:10px 0 24px; color:#4A3A2E;">${name}의 멍BTI 결과</h2>
+        
+        <div class="mbti-img-box">
+            <img src="${imgPath}" onerror="this.src='images/default.png'" alt="${type} 결과 이미지">
         </div>
-        <pre style="text-align:center; color:#555; font-size:15px; margin-top:20px;">
-모든 문항에 "잘 모르겠다"를 선택하셔서
-${name}에게 맞는 정확한 처방을 내릴 수가 없습니다.
 
-진정성 있는 마인드 케어를 위해,
-평소 ${name}의 행동을 조금만 더 떠올려보시고
-다시 한 번 꼼꼼하게 답해주시겠어요?
-        </pre>
+        <div class="result-content">
+            ${RESULT_TEXT[type]}
+        </div>
+
+        <div class="marketing-box">
+            <p class="marketing-text">
+                <strong>"MBTI는 재미로 보지만,<br>아이의 스트레스는 다큐입니다."</strong><br><br>
+                검사 결과, ${name}는(은) 겉모습과 달리<br>
+                속으로는 알게 모르게 긴장하고 있습니다.<br>
+                돈으로 아이의 성격을 바꿀 순 없지만,<br>
+                <strong>마음의 평화</strong>는 선물할 수 있습니다.<br><br>
+                수의사가 설계한 <strong>[폴라밸런스]</strong>로<br>
+                오늘 밤부터 진정한 '꿀잠'과 '안정'을 선물하세요.
+            </p>
+        </div>
+
         <div class="cta">
-          <button class="primary" onclick="location.reload()">🔄 다시 진단하기</button>
+            <a href="https://smartstore.naver.com/polar_balance/products/12454553993?nl-query=%ED%8F%B4%EB%9D%BC%EB%B0%B8%EB%9F%B0%EC%8A%A4&nl-ts-pid=jUNOCsqVW9jO2LU2Jas-227871&NaPm=ct%3Dmkuvfj94%7Cci%3D15000ee5bc839bdd3682200d132a33913cecd49a%7Ctr%3Dsls%7Csn%3D12374561%7Chk%3D0930d7a1f724956c36709eeb8580212fca533b6f" target="_blank">
+                <button class="primary" style="padding:18px; font-size:18px;">👉 ${name} 맞춤 [마음 처방전] 확인하기</button>
+            </a>
+            <button class="secondary" onclick="shareResult()" style="padding:16px; width:100%; margin-top:12px;">🔗 친구에게 결과 공유하기</button>
         </div>
-      </div>
-    `;
-    return;
-  }
 
-  // 2. 결과 산출 (황금 밸런스 수정)
-  const type = 
-    (score.E >= score.I ? 'E' : 'I') +  // E가 이김
-    (score.N > score.S ? 'N' : 'S') +   // S가 이김 (안정성 우선)
-    (score.F >= score.T ? 'F' : 'T') +  // F가 이김
-    (score.P > score.J ? 'P' : 'J');    // J가 이김 (규칙성 우선)
-  
-  // 3. MBTI 대표 이미지 (16종)
-  const imgPath = `images/${type}.png`; 
-
-  document.getElementById('screen-result').innerHTML=`
-  <div class="center">
-    
-    <span class="badge">${type} · ${breedName}</span>
-    <h2 style="font-size:26px; margin:10px 0 20px;">${name}의 멍BTI 결과</h2>
-    
-    <div class="mbti-img-box">
-      <img src="${imgPath}" onerror="this.src='images/default.png'" alt="${type} 결과 이미지">
-    </div>
-
-    <div class="result-content">
-      ${RESULT_TEXT[type]}
-    </div>
-
-    <p style="font-size:13px;color:#6B5646;opacity:.8;margin-top:15px;text-align:center">
-    ※ 본 결과는 반려견 행동학 관점의 스트레스 성향 분석을 기반으로 설계되었습니다.
-    </p>
-
-    <div style="background:#fff7ef; padding:20px; border-radius:16px; margin-top:20px; text-align:center; border:1px solid #ffe0b2;">
-      <p style="margin:0; font-size:15px; line-height:1.6; color:#4e342e;">
-        <strong>"MBTI는 재미로 보지만,<br>아이의 스트레스는 다큐입니다."</strong><br><br>
-        검사 결과, ${name}는(은) 겉모습과 달리<br>
-        속으로는 알게 모르게 긴장하고 있습니다.<br>
-        돈으로 아이의 마음을 살 순 없지만,<br>
-        <strong>마음의 평화</strong>는 선물할 수 있습니다.<br><br>
-        수의사가 설계한 <strong>[폴라밸런스]</strong>로<br>
-        오늘 밤부터 진정한 '꿀잠'과 '안정'을 선물하세요.
-      </p>
-    </div>
-
-    <div class="cta">
-      <a href="https://smartstore.naver.com/polar_balance/products/12454553993?nl-query=%ED%8F%B4%EB%9D%BC%EB%B0%B8%EB%9F%B0%EC%8A%A4&nl-ts-pid=jUNOCsqVW9jO2LU2Jas-227871&NaPm=ct%3Dmkuvfj94%7Cci%3D15000ee5bc839bdd3682200d132a33913cecd49a%7Ctr%3Dsls%7Csn%3D12374561%7Chk%3D0930d7a1f724956c36709eeb8580212fca533b6f" target="_blank">
-        <button class="primary" style="padding:18px; font-size:18px;">👉 ${name} 맞춤 [마음 처방전] 확인하기</button>
-      </a>
-      
-      <div style="margin-top:10px; text-align:center">
-        <button class="secondary" onclick="shareResult()" style="padding:14px; font-size:16px; width:100%">🔗 친구에게 결과 공유하기</button>
-      </div>
-    </div>
-
-    <div style="margin-top:20px;text-align:center">
-      <button
-        onclick="location.reload()"
-        style="
-          background:#D6C6B8;
-          color:#3E2F25;
-          font-weight:600;
-          border-radius:14px;
-          padding:14px 24px;
-          border:none;
-          cursor:pointer;
-          font-size:15px;
-        "
-      >
-        🔁 다른 아이로 다시 검사하기
-      </button>
-    </div>
-  </div>`;
+        <div style="margin-top:24px;">
+            <button onclick="location.reload()" style="background:none; border:none; color:#999; font-size:14px; text-decoration:underline;">🔄 다른 아이로 다시 검사하기</button>
+        </div>
+    </div>`;
 }
 </script>
 </body>
